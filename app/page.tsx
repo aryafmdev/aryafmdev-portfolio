@@ -1,4 +1,6 @@
 import { Header } from '@/components/header';
+import Image from 'next/image';
+import heroImage from '@/app/assets/hero-image.png';
 
 export default function Home() {
   return (
@@ -30,6 +32,14 @@ export default function Home() {
             </a>
           </div>
         </section>
+        <div className='mt-6xl'>
+          <Image
+            src={heroImage}
+            alt='Hero image'
+            className='w-full rounded-4xl shadow-green'
+            priority
+          />
+        </div>
       </main>
     </div>
   );

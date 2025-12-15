@@ -37,7 +37,7 @@ export function Header() {
         </nav>
         <button
           type='button'
-          className='md:hidden inline-flex items-center justify-center rounded-full text-neutral-100'
+          className='md:hidden inline-flex items-center justify-center rounded-full text-neutral-100 cursor-pointer'
           aria-label={open ? 'Close menu' : 'Open menu'}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
@@ -90,7 +90,7 @@ export function Header() {
               </div>
               <button
                 type='button'
-                className='inline-flex items-center justify-center rounded-full text-neutral-100'
+                className='inline-flex items-center justify-center rounded-full text-neutral-100 cursor-pointer'
                 aria-label='Close menu'
                 onClick={() => setOpen(false)}
               >
