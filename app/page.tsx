@@ -1,45 +1,12 @@
 import { Header } from '@/components/header';
-import Image from 'next/image';
-import heroImage from '@/app/assets/hero-image.png';
+import { Hero } from '@/components/hero';
 
 export default function Home() {
   return (
     <div className='bg-dark font-sans'>
       <Header />
       <main className='mx-auto w-full px-4xl py-6xl text-neutral-100'>
-        <section>
-          <div className='flex items-center gap-md'>
-            <div className='h-[2px] w-8 bg-neutral-100/80' />
-            <p className='text-md font-semibold'>
-              Hi, I am Arya FM Software Engineer / Frontend Developer
-            </p>
-          </div>
-          <h1 className='mt-2xl text-display-lg font-extrabold uppercase'>
-            Building fast &amp;{' '}
-            <span className='text-primary-200'>Interactive</span> web
-            experiences.
-          </h1>
-          <p className='mt-2xl text-md text-neutral-400'>
-            Bridging creativity and functionality to deliver stunning,
-            user-friendly web applications
-          </p>
-          <div className='mt-6xl'>
-            <a
-              href='#contact'
-              className='inline-flex w-full items-center justify-center rounded-full bg-primary-200 px-6xl py-xl text-black shadow-green transition-colors hover:bg-primary-300'
-            >
-              <span className='text-lg font-bold'>HIRE ME</span>
-            </a>
-          </div>
-        </section>
-        <div className='mt-6xl'>
-          <Image
-            src={heroImage}
-            alt='Hero image'
-            className='w-full rounded-4xl shadow-green'
-            priority
-          />
-        </div>
+        <Hero />
       </main>
     </div>
   );
