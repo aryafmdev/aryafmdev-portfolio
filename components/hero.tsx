@@ -6,14 +6,15 @@ export function Hero() {
     <>
       <section>
         <div className='flex items-center gap-md'>
-          <div className='h-[2px] w-8 bg-neutral-100/80' />
+          {/* <div className='h-[2px] w-8 bg-neutral-100/80' /> */}
           <p className='text-md font-semibold'>
-            Hi, I am Arya FM Software Engineer / Frontend Developer
+            Hi, I am Arya FM <br /> Software Engineer (Frontend Heavy)
           </p>
         </div>
-        <h1 className='mt-2xl text-display-lg font-extrabold uppercase'>
+        <h1 className='mt-2xl text-display-sm font-extrabold uppercase'>
           Building fast &amp;{' '}
-          <span className='text-primary-200'>Interactive</span> web experiences.
+          <span className='text-primary-200 neon-text'>Interactive</span> web
+          experiences.
         </h1>
         <p className='mt-2xl text-md text-neutral-400'>
           Bridging creativity and functionality to deliver stunning,
@@ -22,7 +23,7 @@ export function Hero() {
         <div className='mt-6xl'>
           <a
             href='#contact'
-            className='inline-flex w-full items-center justify-center rounded-full bg-primary-200 px-6xl py-xl text-black shadow-green transition-colors hover:bg-primary-300'
+            className='inline-flex w-full items-center justify-center rounded-full bg-primary-200 px-6xl py-xl text-black shadow-neon transition-colors hover:bg-primary-300'
           >
             <span className='text-lg font-bold'>HIRE ME</span>
           </a>
@@ -32,7 +33,7 @@ export function Hero() {
         <Image
           src={heroImage}
           alt='Hero image'
-          className='w-full rounded-4xl shadow-green'
+          className='w-full rounded-4xl shadow-neon'
           priority
         />
       </div>

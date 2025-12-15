@@ -8,7 +8,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-red-hat-display);
+  --font-sans: var(--font-michroma);
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     'Liberation Mono', 'Courier New', monospace;
 
@@ -122,4 +122,21 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
+}
+
+.neon-text {
+  text-shadow:
+    /* 0 0 3px var(--color-primary-200), */
+    /* 0 0 6px var(--color-primary-100), */ 0
+    0 22px var(--color-primary-100);
+}
+
+.neon-icon {
+  filter: drop-shadow(0 0 6px var(--color-primary-200))
+    drop-shadow(0 0 14px var(--color-primary-100));
+}
+
+.shadow-neon {
+  box-shadow: 0 0 16px 2px var(--color-primary-200),
+    0 0 28px 6px var(--color-primary-100);
 }

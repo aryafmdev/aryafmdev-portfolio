@@ -1,11 +1,12 @@
 import type { Metadata } from 'next';
-import { Red_Hat_Display } from 'next/font/google';
+import { Michroma } from 'next/font/google';
 import './globals.css';
+import { SpaceBackground } from '@/components/SpaceBackground';
 
-const redHatDisplay = Red_Hat_Display({
-  variable: '--font-red-hat-display',
+const michroma = Michroma({
+  variable: '--font-michroma',
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800'],
+  weight: '400',
   display: 'swap',
 });
 
@@ -21,7 +22,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={`${redHatDisplay.variable} antialiased`}>
+      <body className={`${michroma.variable} antialiased`}>
+        <SpaceBackground />
         {children}
       </body>
     </html>

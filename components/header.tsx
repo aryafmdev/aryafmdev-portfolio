@@ -20,7 +20,7 @@ export function Header() {
           <div className='h-[2px] w-8 bg-neutral-100/80' />
           <Link
             href='#home'
-            className='text-display-sm font-extrabold text-primary-200'
+            className='text-display-sm font-extrabold text-primary-200 neon-text'
           >
             Arya FM
           </Link>

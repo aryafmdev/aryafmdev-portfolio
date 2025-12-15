@@ -7,13 +7,13 @@ export function About() {
       aria-labelledby='about-title'
       className='text-neutral-100 text-center md:text-left'
     >
-      <p className='text-md font-semibold text-primary-200'>ABOUT ME</p>
+      <p className='text-md font-semibold text-primary-200 neon-text'>ABOUT ME</p>
       <h2
         id='about-title'
-        className='mt-md text-display-lg font-extrabold uppercase'
+        className='mt-md text-display-xs font-extrabold uppercase'
       >
         Crafting seamless
-        <span className='text-primary-200'> High-performance web </span>
+        <span className='text-primary-200 neon-text'> High-performance web </span>
         experiences
       </h2>
       <p className='mt-2xl text-md text-neutral-400'>
@@ -25,7 +25,7 @@ export function About() {
         <Image
           src={aboutImage}
           alt='About me work showcase'
-          className='w-full rounded-4xl'
+          className='w-full rounded-4xl shadow-neon'
           priority
         />
       </div>

@@ -22,10 +22,10 @@ export function Service() {
 
   return (
     <section aria-labelledby='service-title' className='text-neutral-100'>
-      <p className='text-md font-semibold text-primary-200'>SERVICE</p>
+      <p className='text-md font-semibold text-primary-200 neon-text'>SERVICE</p>
       <h2
         id='service-title'
-        className='mt-md text-display-lg font-extrabold uppercase'
+        className='mt-md text-display-xs font-extrabold uppercase'
       >
         MY SERVICE EXPERTISE
       </h2>
@@ -39,7 +39,7 @@ export function Service() {
           <p className='text-sm text-neutral-400'>01</p>
           <div className='my-md border-t border-neutral-900' />
           <span className='mb-md inline-flex items-center justify-center rounded-full text-primary-200'>
-            <Icon icon='lucide:monitor' width={32} height={32} />
+            <Icon icon='lucide:monitor' width={32} height={32} className='neon-icon' />
           </span>
           <h3 className='text-xl font-semibold text-neutral-100'>
             {item.title}
