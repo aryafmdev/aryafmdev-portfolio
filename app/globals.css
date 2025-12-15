@@ -108,14 +108,12 @@
   --text-xs: 0.75rem;
   --text-xs--line-height: 1.5rem;
 
-  --shadow-green: 0 0 0 4px
-      color-mix(in oklab, var(--color-primary-200) 30%, transparent),
-    0 8px 24px color-mix(in oklab, var(--color-primary-200) 18%, transparent);
+  --shadow-green: 0px 4px 40px 0px #91ff0266;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: var(--color-neutral-950);
+    --background: var(--color-black);
     --foreground: var(--color-neutral-100);
   }
 }
