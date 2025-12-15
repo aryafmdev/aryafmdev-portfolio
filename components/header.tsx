@@ -1,6 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { useState } from 'react';
+import { Icon } from '@iconify/react';
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -42,36 +43,12 @@ export function Header() {
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
         >
-          {open ? (
-            <svg
-              xmlns='http://www.w3.org/2000/svg'
-              width='28'
-              height='28'
-              viewBox='0 0 24 24'
-              fill='none'
-              stroke='currentColor'
-              strokeWidth='2'
-              className='text-neutral-100'
-            >
-              <path d='M18 6 6 18' />
-              <path d='M6 6l12 12' />
-            </svg>
-          ) : (
-            <svg
-              xmlns='http://www.w3.org/2000/svg'
-              width='28'
-              height='28'
-              viewBox='0 0 24 24'
-              fill='none'
-              stroke='currentColor'
-              strokeWidth='2'
-              className='text-neutral-100'
-            >
-              <path d='M3 6h18' />
-              <path d='M3 12h18' />
-              <path d='M3 18h18' />
-            </svg>
-          )}
+          <Icon
+            icon={open ? 'mingcute:close-fill' : 'mingcute:menu-fill'}
+            width={28}
+            height={28}
+            className='text-neutral-100'
+          />
         </button>
       </div>
       {open && (
@@ -94,19 +71,12 @@ export function Header() {
                 aria-label='Close menu'
                 onClick={() => setOpen(false)}
               >
-                <svg
-                  xmlns='http://www.w3.org/2000/svg'
-                  width='28'
-                  height='28'
-                  viewBox='0 0 24 24'
-                  fill='none'
-                  stroke='currentColor'
-                  strokeWidth='2'
+                <Icon
+                  icon='mingcute:close-fill'
+                  width={28}
+                  height={28}
                   className='text-neutral-100'
-                >
-                  <path d='M18 6 6 18' />
-                  <path d='M6 6l12 12' />
-                </svg>
+                />
               </button>
             </div>
             <nav className='flex flex-col gap-2xl py-lg'>
