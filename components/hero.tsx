@@ -28,7 +28,7 @@ export function Hero() {
           </a>
         </div>
       </section>
-      <div className='mt-6xl md:hidden'>
+      <div className='mt-6xl'>
         <Image
           src={heroImage}
           alt='Hero image'
