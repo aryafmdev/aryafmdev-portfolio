@@ -6,10 +6,10 @@ import heroImage from '@/app/assets/hero-image.png';
 export function Available() {
   return (
     <section id='available' aria-labelledby='available-title' className='text-neutral-100'>
-      <p className='text-md font-semibold text-primary-200 neon-text'>AVAILABLE</p>
+      {/* <p className='text-md font-semibold text-primary-200 neon-text'>AVAILABLE</p>
       <h2 id='available-title' className='mt-md text-display-xs font-extrabold uppercase'>
         AVAILABLE FOR WORK
-      </h2>
+      </h2> */}
 
       <div className='mt-6xl mx-auto max-w-[520px]'>
         <Image

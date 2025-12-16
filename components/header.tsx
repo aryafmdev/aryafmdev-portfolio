@@ -31,7 +31,18 @@ export function Header() {
         window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
       } else {
         const el = document.getElementById(id);
-        el?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const headerEl = document.querySelector('header') as HTMLElement | null;
+        const headerH = headerEl?.offsetHeight ?? 0;
+        const extra = id === 'about' ? 38 : 8;
+        if (el) {
+          const y =
+            el.getBoundingClientRect().top + window.scrollY - headerH - extra;
+          window.scrollTo({
+            top: Math.max(0, y),
+            left: 0,
+            behavior: 'smooth',
+          });
+        }
       }
       setOpen(false);
     };
