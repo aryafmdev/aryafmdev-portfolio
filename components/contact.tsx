@@ -1,15 +1,36 @@
 'use client';
-import { FormEvent } from 'react';
+import { FormEvent, useState } from 'react';
+import { ContactModal } from './contact-modal';
 
 export function Contact() {
+  const [open, setOpen] = useState(false);
+  const [status, setStatus] = useState<'success' | 'error'>('success');
+
   function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    const name = String(data.get('name') || '').trim();
+    const email = String(data.get('email') || '').trim();
+    const message = String(data.get('message') || '').trim();
+    const isValid = name.length > 0 && email.length > 3 && message.length > 0;
+    setStatus(isValid ? 'success' : 'error');
+    setOpen(true);
   }
 
   return (
-    <section id='contact' aria-labelledby='contact-title' className='text-neutral-100'>
-      <p className='text-md font-semibold text-primary-200 neon-text'>CONTACT</p>
-      <h2 id='contact-title' className='mt-md text-display-xs font-extrabold uppercase'>
+    <section
+      id='contact'
+      aria-labelledby='contact-title'
+      className='text-neutral-100'
+    >
+      <p className='text-md font-semibold text-primary-200 neon-text'>
+        CONTACT
+      </p>
+      <h2
+        id='contact-title'
+        className='mt-md text-display-xs font-extrabold uppercase'
+      >
         LET’S GET IN TOUCH
       </h2>
 
@@ -74,7 +95,11 @@ export function Contact() {
           </button>
         </div>
       </form>
+      <ContactModal
+        open={open}
+        status={status}
+        onCloseAction={() => setOpen(false)}
+      />
     </section>
   );
 }
-
