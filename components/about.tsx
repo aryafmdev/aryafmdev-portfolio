@@ -9,7 +9,7 @@ export function About() {
     >
       <p className='text-md font-semibold text-primary-200 neon-text'>ABOUT ME</p>
       <h2
-        id='about-title'
+        id='about'
         className='mt-md text-display-xs font-extrabold uppercase'
       >
         Crafting seamless
