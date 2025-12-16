@@ -2,6 +2,7 @@ import { Header } from '@/components/header';
 import { Hero } from '@/components/hero';
 import { Service } from '@/components/service';
 import { About } from '@/components/about';
+import { Skill } from '@/components/skill';
 
 export default function Home() {
   return (
@@ -14,6 +15,9 @@ export default function Home() {
         </div>
         <div className='mt-8xl'>
           <About />
+        </div>
+        <div className='mt-8xl'>
+          <Skill />
         </div>
       </main>
     </div>
