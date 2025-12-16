@@ -5,7 +5,7 @@ import heroImage from '@/app/assets/hero-image.png';
 
 export function Available() {
   return (
-    <section id='available' aria-labelledby='available-title' className='text-neutral-100'>
+    <section id='available' aria-labelledby='available-title' className='text-neutral-100 max-w-[1280px] mx-auto'>
       {/* <p className='text-md font-semibold text-primary-200 neon-text'>AVAILABLE</p>
       <h2 id='available-title' className='mt-md text-display-xs font-extrabold uppercase'>
         AVAILABLE FOR WORK

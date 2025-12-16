@@ -21,7 +21,7 @@ export function Service() {
   ];
 
   return (
-    <section aria-labelledby='service-title' className='text-neutral-100'>
+    <section aria-labelledby='service-title' className='text-neutral-100 max-w-[1280px] mx-auto'>
       <p className='text-md font-semibold text-primary-200 neon-text'>SERVICE</p>
       <h2
         id='service-title'

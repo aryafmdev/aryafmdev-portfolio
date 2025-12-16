@@ -55,7 +55,7 @@ function ListSection(props: {
 
 export function Working() {
   return (
-    <section id='working' aria-labelledby='working-title' className='text-neutral-100'>
+    <section id='working' aria-labelledby='working-title' className='text-neutral-100 max-w-[1280px] mx-auto'>
       <p className='text-md font-semibold text-primary-200 neon-text'>WORKING</p>
       <h2 id='working-title' className='mt-md text-display-xs font-extrabold uppercase'>
         WHY CHOOSE ME?

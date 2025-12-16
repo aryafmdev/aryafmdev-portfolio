@@ -22,7 +22,7 @@ export function Contact() {
     <section
       id='contact'
       aria-labelledby='contact-title'
-      className='text-neutral-100'
+      className='text-neutral-100 max-w-[1280px] mx-auto'
     >
       <p className='text-md font-semibold text-primary-200 neon-text'>
         CONTACT
@@ -36,7 +36,7 @@ export function Contact() {
 
       <form
         onSubmit={onSubmit}
-        className='mt-6xl mx-auto w-full max-w-[720px] space-y-3xl'
+        className='mt-6xl mx-auto w-full space-y-3xl'
         noValidate
       >
         <div>

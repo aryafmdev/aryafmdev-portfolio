@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <div className='bg-dark font-sans'>
       <Header />
-      <main className='mx-auto w-full px-4xl py-6xl text-neutral-100'>
+      <main className='mx-auto w-full px-4xl py-xl text-neutral-100'>
         <Hero />
         <div className='mt-8xl'>
           <Service />

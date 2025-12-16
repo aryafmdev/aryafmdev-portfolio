@@ -167,7 +167,7 @@ export function Testimonials() {
     <section
       id='testimonials'
       aria-labelledby='testimonials-title'
-      className='text-neutral-100'
+      className='text-neutral-100 max-w-[1280px] mx-auto'
     >
       <p className='text-md font-semibold text-primary-200 neon-text'>
         TESTIMONIALS

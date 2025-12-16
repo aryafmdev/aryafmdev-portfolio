@@ -52,7 +52,7 @@ export function Header() {
         scrolled ? 'bg-black' : ''
       }`}
     >
-      <div className='mx-auto flex items-center justify-between px-xl py-lg'>
+      <div className='mx-auto flex items-center justify-between px-xl md:px-2xl lg:px-4xl xl:px-6xl 2xl:px-8xl py-lg'>
         <div className='flex items-center gap-md'>
           <div className='h-[2px] w-8 bg-neutral-100/80' />
           <Link
@@ -63,7 +63,7 @@ export function Header() {
             Arya FM
           </Link>
         </div>
-        <nav className='hidden md:flex items-center gap-xl'>
+        <nav className='hidden md:flex items-center gap-2xl lg:gap-4xl xl:gap-6xl'>
           {nav.map((item) => (
             <Link
               key={item.id}

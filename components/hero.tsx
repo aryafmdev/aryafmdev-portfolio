@@ -4,7 +4,11 @@ import heroImage from '@/app/assets/hero-image.png';
 export function Hero() {
   return (
     <>
-      <section>
+      <section
+        id='hero'
+        aria-labelledby='hero-title'
+        className='text-neutral-100 max-w-[1280px] mx-auto'
+      >
         <div className='flex items-center gap-md'>
           {/* <div className='h-[2px] w-8 bg-neutral-100/80' /> */}
           <p className='text-md font-semibold'>
@@ -29,7 +33,7 @@ export function Hero() {
           </a>
         </div>
       </section>
-      <div className='mt-6xl'>
+      <div className='mt-6xl max-w-[1280px] mx-auto'>
         <Image
           src={heroImage}
           alt='Hero image'

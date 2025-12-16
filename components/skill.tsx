@@ -31,7 +31,7 @@ export function Skill() {
     <section
       id='skill'
       aria-labelledby='skill-title'
-      className='text-neutral-100'
+      className='text-neutral-100 max-w-[1280px] mx-auto'
     >
       <p className='text-md font-semibold text-primary-200 neon-text'>SKILLS</p>
       <h2
