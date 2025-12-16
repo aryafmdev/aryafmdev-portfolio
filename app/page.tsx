@@ -4,6 +4,7 @@ import { Service } from '@/components/service';
 import { About } from '@/components/about';
 import { Skill } from '@/components/skill';
 import { Working } from '@/components/working';
+import { Experience } from '@/components/experience';
 
 export default function Home() {
   return (
@@ -22,6 +23,9 @@ export default function Home() {
         </div>
         <div className='mt-8xl'>
           <Working />
+        </div>
+        <div className='mt-8xl'>
+          <Experience />
         </div>
       </main>
     </div>
