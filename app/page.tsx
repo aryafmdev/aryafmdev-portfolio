@@ -6,6 +6,7 @@ import { Skill } from '@/components/skill';
 import { Working } from '@/components/working';
 import { Experience } from '@/components/experience';
 import { Portfolio } from '@/components/portfolio';
+import { Testimonials } from '@/components/testimonials';
 
 export default function Home() {
   return (
@@ -30,6 +31,9 @@ export default function Home() {
         </div>
         <div className='mt-8xl'>
           <Portfolio />
+        </div>
+        <div className='mt-8xl'>
+          <Testimonials />
         </div>
       </main>
     </div>
