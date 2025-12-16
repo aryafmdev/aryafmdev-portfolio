@@ -1,10 +1,28 @@
 'use client';
 import { FormEvent, useState } from 'react';
+import { z } from 'zod';
 import { ContactModal } from './contact-modal';
 
 export function Contact() {
   const [open, setOpen] = useState(false);
   const [status, setStatus] = useState<'success' | 'error'>('success');
+  const [errors, setErrors] = useState<{
+    name?: string;
+    email?: string;
+    message?: string;
+  }>({});
+
+  const contactSchema = z.object({
+    name: z.string().min(2, 'Name must be at least 2 characters'),
+    email: z.string().email('Invalid email address'),
+    message: z
+      .string()
+      .trim()
+      .refine(
+        (msg) => msg.split(/\s+/).filter(Boolean).length >= 2,
+        'Message must contain at least 2 words'
+      ),
+  });
 
   function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -13,9 +31,34 @@ export function Contact() {
     const name = String(data.get('name') || '').trim();
     const email = String(data.get('email') || '').trim();
     const message = String(data.get('message') || '').trim();
-    const isValid = name.length > 0 && email.length > 3 && message.length > 0;
-    setStatus(isValid ? 'success' : 'error');
-    setOpen(true);
+    const result = contactSchema.safeParse({ name, email, message });
+
+    if (result.success) {
+      setErrors({});
+      setStatus('success');
+      setOpen(true);
+    } else {
+      const flattened = result.error.flatten();
+      const fieldErrors = flattened.fieldErrors;
+      const nextErrors = {
+        name: fieldErrors.name?.[0],
+        email: fieldErrors.email?.[0],
+        message: fieldErrors.message?.[0],
+      };
+      setErrors(nextErrors);
+      const firstInvalid =
+        (nextErrors.name ? 'name' : undefined) ??
+        (nextErrors.email ? 'email' : undefined) ??
+        (nextErrors.message ? 'message' : undefined);
+      if (firstInvalid) {
+        const el = form.querySelector<HTMLInputElement | HTMLTextAreaElement>(
+          `#${firstInvalid}`
+        );
+        el?.focus();
+      }
+      setStatus('error');
+      setOpen(true);
+    }
   }
 
   return (
@@ -52,7 +95,14 @@ export function Contact() {
             className='mt-sm w-full rounded-xl border border-neutral-900 bg-neutral-900/20 px-2xl py-xl text-neutral-100 placeholder-neutral-500'
             placeholder='Your name'
             aria-label='Name'
+            aria-invalid={Boolean(errors.name) || undefined}
+            aria-describedby={errors.name ? 'name-error' : undefined}
           />
+          {errors.name && (
+            <p id='name-error' className='mt-xs text-sm text-red-500'>
+              {errors.name}
+            </p>
+          )}
         </div>
 
         <div>
@@ -68,7 +118,14 @@ export function Contact() {
             className='mt-sm w-full rounded-xl border border-neutral-900 bg-neutral-900/20 px-2xl py-xl text-neutral-100 placeholder-neutral-500'
             placeholder='you@example.com'
             aria-label='Email'
+            aria-invalid={Boolean(errors.email) || undefined}
+            aria-describedby={errors.email ? 'email-error' : undefined}
           />
+          {errors.email && (
+            <p id='email-error' className='mt-xs text-sm text-red-500'>
+              {errors.email}
+            </p>
+          )}
         </div>
 
         <div>
@@ -83,7 +140,14 @@ export function Contact() {
             className='mt-sm w-full rounded-xl border border-neutral-900 bg-neutral-900/20 px-2xl py-xl text-neutral-100 placeholder-neutral-500'
             placeholder='Write your message...'
             aria-label='Message'
+            aria-invalid={Boolean(errors.message) || undefined}
+            aria-describedby={errors.message ? 'message-error' : undefined}
           />
+          {errors.message && (
+            <p id='message-error' className='mt-xs text-sm text-red-500'>
+              {errors.message}
+            </p>
+          )}
         </div>
 
         <div>
