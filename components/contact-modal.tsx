@@ -13,23 +13,23 @@ export function ContactModal(props: {
   if (!props.open) return null;
   const isSuccess = props.status === 'success';
   return (
-    <div className='fixed inset-0 z-50 bg-black/60 backdrop-blur-xl'>
-      <div className='mx-auto mt-8xl w-full max-w-[540px] px-xl text-center'>
-        <div className='flex justify-center'>
-          <span className='inline-flex items-center justify-center'>
-            <Image
-              src={isSuccess ? successImg : failedImg}
-              alt={
-                isSuccess
-                  ? 'Message sent successfully'
-                  : 'Message failed to send'
-              }
-              className='h-[120px] w-[120px] object-contain'
-              priority
-            />
-          </span>
-        </div>
+    <div className='fixed inset-0 z-50 bg-black/60 backdrop-blur-xl flex items-center justify-center'>
+      <div className='w-full max-w-[540px] px-xl text-center'>
         <div className='mt-xl rounded-4xl border border-neutral-900 bg-black/70 p-3xl text-neutral-100'>
+          <div className='flex justify-center'>
+            <span className='inline-flex items-center justify-center'>
+              <Image
+                src={isSuccess ? successImg : failedImg}
+                alt={
+                  isSuccess
+                    ? 'Message sent successfully'
+                    : 'Message failed to send'
+                }
+                className='h-[120px] w-[120px] object-contain'
+                priority
+              />
+            </span>
+          </div>
           <h3 className='text-xl font-extrabold'>
             {isSuccess ? 'Message Sent Successfully!' : 'Message not sent!'}
           </h3>
