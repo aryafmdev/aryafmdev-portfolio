@@ -8,6 +8,7 @@ import { Experience } from '@/components/experience';
 import { Portfolio } from '@/components/portfolio';
 import { Testimonials } from '@/components/testimonials';
 import { FAQ } from '@/components/faq';
+import { Available } from '@/components/available';
 
 export default function Home() {
   return (
@@ -38,6 +39,9 @@ export default function Home() {
         </div>
         <div className='mt-8xl'>
           <FAQ />
+        </div>
+        <div className='mt-8xl'>
+          <Available />
         </div>
       </main>
     </div>
