@@ -58,12 +58,12 @@ export function Portfolio() {
       aria-labelledby='portfolio-title'
       className='text-neutral-100 max-w-[1280px] mx-auto'
     >
-      <p className='text-md font-semibold text-primary-200 neon-text'>
+      <p className='text-md font-semibold text-primary-200 neon-text text-center'>
         PORTFOLIO
       </p>
       <h2
         id='portfolio-title'
-        className='mt-md text-display-xs font-extrabold uppercase'
+        className='mt-md text-display-sm font-extrabold uppercase text-center'
       >
         SELECTED WORK
       </h2>

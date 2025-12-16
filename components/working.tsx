@@ -27,21 +27,31 @@ function ListSection(props: {
   title: string;
   avatar: React.ReactNode;
   items: Item[];
+  textClass?: string;
 }) {
   return (
     <div>
-      <p className='text-md font-semibold text-neutral-100'>{props.title}</p>
-      <div className='mt-2xl flex justify-center'>
-        {props.avatar}
-      </div>
+      <p className='text-md font-semibold text-neutral-100 text-center'>
+        {props.title}
+      </p>
+      <div className='mt-2xl flex justify-center'>{props.avatar}</div>
       <div className='mt-3xl'>
         {props.items.map((i, idx) => (
           <div key={i.text} className='py-xl'>
             <div className='flex items-center gap-md'>
               <span className='inline-flex items-center justify-center text-primary-200'>
-                <Icon icon='lucide:sparkles' width={22} height={22} className='neon-icon' />
+                <Icon
+                  icon='lucide:sparkles'
+                  width={22}
+                  height={22}
+                  className='neon-icon'
+                />
               </span>
-              <span className='text-md text-neutral-100'>{i.text}</span>
+              <span
+                className={`text-md ${props.textClass ?? 'text-neutral-100'}`}
+              >
+                {i.text}
+              </span>
             </div>
             {idx < props.items.length - 1 && (
               <div className='mt-md border-t border-neutral-900' />
@@ -55,9 +65,18 @@ function ListSection(props: {
 
 export function Working() {
   return (
-    <section id='working' aria-labelledby='working-title' className='text-neutral-100 max-w-[1280px] mx-auto'>
-      <p className='text-md font-semibold text-primary-200 neon-text'>WORKING</p>
-      <h2 id='working-title' className='mt-md text-display-xs font-extrabold uppercase'>
+    <section
+      id='working'
+      aria-labelledby='working-title'
+      className='text-neutral-100 max-w-[1280px] mx-auto'
+    >
+      <p className='text-md font-semibold text-primary-200 neon-text text-center'>
+        WORKING
+      </p>
+      <h2
+        id='working-title'
+        className='mt-md text-display-sm font-extrabold uppercase text-center'
+      >
         WHY CHOOSE ME?
       </h2>
 
@@ -81,10 +100,11 @@ export function Working() {
           title='ANOTHER TALENT'
           avatar={
             <span className='inline-flex h-20 w-20 items-center justify-center rounded-full border border-neutral-900 bg-neutral-900/20 text-primary-200 neon-icon'>
-              <Icon icon='mingcute:user-4-fill' width={28} height={28} />
+              <Icon icon='mingcute:user-4-fill' width={80} height={80} />
             </span>
           }
           items={otherTalent}
+          textClass='text-neutral-500'
         />
       </div>
 
@@ -99,4 +119,3 @@ export function Working() {
     </section>
   );
 }
-

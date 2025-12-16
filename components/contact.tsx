@@ -29,7 +29,7 @@ export function Contact() {
       </p>
       <h2
         id='contact-title'
-        className='mt-md text-display-xs font-extrabold uppercase'
+        className='mt-md text-display-sm font-extrabold uppercase'
       >
         LET’S GET IN TOUCH
       </h2>

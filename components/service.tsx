@@ -30,7 +30,7 @@ export function Service() {
       </p>
       <h2
         id='service-title'
-        className='mt-md text-display-xs font-extrabold uppercase'
+        className='mt-md text-display-sm font-extrabold uppercase'
       >
         MY SERVICE EXPERTISE
       </h2>

@@ -36,7 +36,7 @@ export function Skill() {
       <p className='text-md font-semibold text-primary-200 neon-text'>SKILLS</p>
       <h2
         id='skill-title'
-        className='mt-md text-display-xs font-extrabold uppercase'
+        className='mt-md text-display-sm font-extrabold uppercase'
       >
         SKILLS THAT BRING IDEAS TO LIFE
       </h2>

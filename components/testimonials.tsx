@@ -169,12 +169,12 @@ export function Testimonials() {
       aria-labelledby='testimonials-title'
       className='text-neutral-100 max-w-[1280px] mx-auto'
     >
-      <p className='text-md font-semibold text-primary-200 neon-text'>
+      <p className='text-md font-semibold text-primary-200 neon-text text-center'>
         TESTIMONIALS
       </p>
       <h2
         id='testimonials-title'
-        className='mt-md text-display-xs font-extrabold uppercase'
+        className='mt-md text-display-sm font-extrabold uppercase text-center '
       >
         PEOPLE SAYS ABOUT ME
       </h2>

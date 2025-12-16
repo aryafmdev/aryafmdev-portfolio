@@ -36,8 +36,8 @@ const faqs: QA[] = [
 export function FAQ() {
   return (
     <section id='faq' aria-labelledby='faq-title' className='text-neutral-100 max-w-[1280px] mx-auto'>
-      <p className='text-md font-semibold text-primary-200 neon-text'>FAQ</p>
-      <h2 id='faq-title' className='mt-md text-display-xs font-extrabold uppercase'>
+      <p className='text-md font-semibold text-primary-200 neon-text text-center'>FAQ</p>
+      <h2 id='faq-title' className='mt-md text-display-md font-extrabold uppercase text-center'>
         FREQUENTLY ASKED QUESTIONS
       </h2>
       <div className='mt-6xl'>

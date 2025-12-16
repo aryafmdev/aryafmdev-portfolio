@@ -5,7 +5,7 @@ export function About() {
   return (
     <section
       aria-labelledby='about-title'
-      className='text-neutral-100 text-left max-w-[1280px] mx-auto'
+      className='text-neutral-100 text-center max-w-[1280px] mx-auto'
     >
       <p className='text-md font-semibold text-primary-200 neon-text'>ABOUT ME</p>
       <h2
