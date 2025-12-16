@@ -1,26 +1,53 @@
 'use client';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Icon } from '@iconify/react';
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [active, setActive] = useState<
+    'home' | 'about' | 'skill' | 'portfolio' | 'faq' | 'contact'
+  >('home');
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 0);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
   const nav = [
-    { label: 'Home', href: '#home' },
-    { label: 'About', href: '#about' },
-    { label: 'Skill', href: '#skill' },
-    { label: 'Projects', href: '#projects' },
-    { label: 'FAQ', href: '#faq' },
-    { label: 'Contact', href: '#contact' },
-  ];
+    { label: 'Home', id: 'home', href: '#home' },
+    { label: 'About', id: 'about', href: '#about' },
+    { label: 'Skill', id: 'skill', href: '#skill' },
+    { label: 'Projects', id: 'portfolio', href: '#portfolio' },
+    { label: 'FAQ', id: 'faq', href: '#faq' },
+    { label: 'Contact', id: 'contact', href: '#contact' },
+  ] as const;
+  const handleNavClick =
+    (id: (typeof nav)[number]['id']) => (e: React.MouseEvent) => {
+      e.preventDefault();
+      setActive(id);
+      if (id === 'home') {
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+      } else {
+        const el = document.getElementById(id);
+        el?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      setOpen(false);
+    };
   return (
-    <header className='w-full border-b border-neutral-900 text-neutral-100 dark:border-neutral-100/15'>
+    <header
+      className={`sticky top-0 z-50 w-full border-b border-neutral-900 text-neutral-100 dark:border-neutral-100/15 transition-colors ${
+        scrolled ? 'bg-black' : ''
+      }`}
+    >
       <div className='mx-auto flex items-center justify-between px-xl py-lg'>
         <div className='flex items-center gap-md'>
           <div className='h-[2px] w-8 bg-neutral-100/80' />
           <Link
             href='#home'
             className='text-display-sm font-extrabold text-primary-200 neon-text'
+            onClick={handleNavClick('home')}
           >
             Arya FM
           </Link>
@@ -28,9 +55,14 @@ export function Header() {
         <nav className='hidden md:flex items-center gap-xl'>
           {nav.map((item) => (
             <Link
-              key={item.href}
+              key={item.id}
               href={item.href}
-              className='text-md font-medium text-neutral-100 hover:text-primary-200 transition-colors'
+              onClick={handleNavClick(item.id)}
+              className={`text-md font-medium transition-colors ${
+                active === item.id
+                  ? 'text-primary-200 neon-text'
+                  : 'text-neutral-100 hover:text-primary-200'
+              }`}
             >
               {item.label}
             </Link>
@@ -82,10 +114,14 @@ export function Header() {
             <nav className='flex flex-col gap-2xl py-lg'>
               {nav.map((item) => (
                 <Link
-                  key={item.href}
+                  key={item.id}
                   href={item.href}
-                  className='text-xl font-medium text-neutral-100 hover:text-primary-200 transition-colors'
-                  onClick={() => setOpen(false)}
+                  className={`text-xl font-medium transition-colors ${
+                    active === item.id
+                      ? 'text-primary-200 neon-text'
+                      : 'text-neutral-100 hover:text-primary-200'
+                  }`}
+                  onClick={handleNavClick(item.id)}
                 >
                   {item.label}
                 </Link>
