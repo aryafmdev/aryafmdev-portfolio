@@ -29,8 +29,8 @@ export function Available() {
   });
   const parallaxY = useTransform(scrollYProgress, [0, 1], [0, 24]);
   const bob = useMotionValue(0);
-  animate(bob, [0, -6, 0], {
-    duration: 4,
+  animate(bob, [0, -16, 0, 16, 0], {
+    duration: 7,
     ease: 'easeInOut',
     repeat: Infinity,
   });
@@ -45,15 +45,37 @@ export function Available() {
   const y = useSpring(yRaw, { stiffness: 140, damping: 18 });
   const shakeX = useMotionValue(0);
   const shakeRz = useMotionValue(0);
+  const floatX = useMotionValue(0);
+  const floatRz = useMotionValue(0);
   const xCombinedRaw = useMotionValue(0);
+  const rzCombinedRaw = useMotionValue(0);
+  animate(floatX, [0, 8, 0, -8, 0], {
+    duration: 8,
+    ease: 'easeInOut',
+    repeat: Infinity,
+  });
+  animate(floatRz, [0, 0.8, 0, -0.8, 0], {
+    duration: 8,
+    ease: 'easeInOut',
+    repeat: Infinity,
+  });
   useMotionValueEvent(x, 'change', (vx) => {
-    xCombinedRaw.set(vx + shakeX.get());
+    xCombinedRaw.set(vx + shakeX.get() + floatX.get());
   });
   useMotionValueEvent(shakeX, 'change', (sx) => {
-    xCombinedRaw.set(x.get() + sx);
+    xCombinedRaw.set(x.get() + sx + floatX.get());
+  });
+  useMotionValueEvent(floatX, 'change', (fx) => {
+    xCombinedRaw.set(x.get() + shakeX.get() + fx);
+  });
+  useMotionValueEvent(shakeRz, 'change', (sz) => {
+    rzCombinedRaw.set(sz + floatRz.get());
+  });
+  useMotionValueEvent(floatRz, 'change', (fz) => {
+    rzCombinedRaw.set(shakeRz.get() + fz);
   });
   const xCombined = useSpring(xCombinedRaw, { stiffness: 140, damping: 18 });
-  const rz = useSpring(shakeRz, { stiffness: 140, damping: 18 });
+  const rz = useSpring(rzCombinedRaw, { stiffness: 140, damping: 18 });
   const xShadow = useTransform(xCombined, (v) => v * 0.6);
   const yShadow = useTransform(y, (v) => v * 0.6);
   const rxShadow = useTransform(rotateX, (v) => v * 0.5);
@@ -89,6 +111,31 @@ export function Available() {
   );
   const blurRadius = useSpring(blurRadiusRaw, { stiffness: 100, damping: 24 });
   const revealBlur = useTransform(blurRadius, (r) => `blur(${r}px)`);
+  const bounceScale = useMotionValue(1);
+  const bounceY = useMotionValue(0);
+  const finalScale = useTransform(
+    [revealScale, bounceScale],
+    ([rs, bs]) => (rs as number) * (bs as number)
+  );
+  const finalY = useTransform(
+    [revealY, bounceY],
+    ([ry, by]) => (ry as number) + (by as number)
+  );
+  const prevProgress = useRef(scrollYProgress.get());
+  useMotionValueEvent(scrollYProgress, 'change', (v) => {
+    const prev = prevProgress.current;
+    if (prev < 0.18 && v >= 0.18) {
+      animate(bounceScale, [1, 1.2, 0.8, 1], {
+        duration: 0.6,
+        ease: 'easeOut',
+      });
+      animate(bounceY, [0, 24, -12, 0], {
+        duration: 0.6,
+        ease: 'easeOut',
+      });
+    }
+    prevProgress.current = v;
+  });
   const onMouseMove = useCallback(
     (e: React.MouseEvent) => {
       const nx = e.clientX / window.innerWidth - 0.5;
@@ -129,12 +176,12 @@ export function Available() {
 
       <div ref={containerRef} className='mt-xl mx-auto max-w-[520px]'>
         <motion.div
-          className='relative block w-full overflow-hidden'
+          className='relative block w-full overflow-hidden pb-4xl'
           style={{
             perspective: 1000,
-            scale: revealScale,
+            scale: finalScale,
             opacity: revealOpacity,
-            y: revealY,
+            y: finalY,
             filter: revealBlur,
             willChange: 'transform, filter',
           }}
