@@ -8,7 +8,7 @@ import {
   useMotionValueEvent,
   animate,
 } from 'framer-motion';
-import { useCallback } from 'react';
+import { useCallback, useRef } from 'react';
 import Image from 'next/image';
 import heroImage from '@/app/assets/robotmetallic.png';
 
@@ -52,6 +52,42 @@ export function Hero() {
   const yShadow = useTransform(y, (v) => v * 0.6);
   const rxShadow = useTransform(rotateX, (v) => v * 0.5);
   const ryShadow = useTransform(rotateY, (v) => v * 0.5);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start end', 'end start'],
+  });
+  const revealScaleRaw = useTransform(
+    scrollYProgress,
+    [0, 0.25, 0.75, 1],
+    [0.05, 1, 1, 0.05]
+  );
+  const revealOpacityRaw = useTransform(
+    scrollYProgress,
+    [0, 0.25, 0.75, 1],
+    [0, 1, 1, 0]
+  );
+  const revealYRaw = useTransform(
+    scrollYProgress,
+    [0, 0.25, 0.75, 1],
+    [-60, 0, 0, 60]
+  );
+  const revealScale = useSpring(revealScaleRaw, {
+    stiffness: 100,
+    damping: 24,
+  });
+  const revealOpacity = useSpring(revealOpacityRaw, {
+    stiffness: 100,
+    damping: 24,
+  });
+  const revealY = useSpring(revealYRaw, { stiffness: 100, damping: 24 });
+  const blurRadiusRaw = useTransform(
+    scrollYProgress,
+    [0, 0.25, 0.75, 1],
+    [14, 0, 0, 14]
+  );
+  const blurRadius = useSpring(blurRadiusRaw, { stiffness: 100, damping: 24 });
+  const revealBlur = useTransform(blurRadius, (r) => `blur(${r}px)`);
 
   const onMouseMove = useCallback(
     (e: React.MouseEvent) => {
@@ -114,13 +150,18 @@ export function Hero() {
       </section>
       <motion.div
         className='mt-4xl block w-full max-w-[1100px] mx-auto'
-        style={{ perspective: 1000 }}
+        ref={containerRef}
+        style={{
+          perspective: 1000,
+          scale: revealScale,
+          opacity: revealOpacity,
+          y: revealY,
+          filter: revealBlur,
+          willChange: 'transform, filter',
+        }}
         onMouseMove={onMouseMove}
         onHoverStart={onHoverStart}
         onHoverEnd={onHoverEnd}
-        initial={{ opacity: 0, scale: 0.98, y: 16 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: 'easeOut' }}
         whileHover={{ scale: 1.02 }}
       >
         <motion.div
