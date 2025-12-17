@@ -140,3 +140,19 @@ body {
   box-shadow: 0 0 16px 2px var(--color-primary-200),
     0 0 28px 6px var(--color-primary-100);
 }
+
+@keyframes hero-bob {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-6px) rotate(0.3deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+.animate-hero-bob {
+  animation: hero-bob 4s ease-in-out infinite;
+}

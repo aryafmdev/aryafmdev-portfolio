@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
 import { Icon } from '@iconify/react';
-import robotImage from '@/app/assets/cuterobot.png';
+import robotImage from '@/app/assets/robotmetallic.png';
 
 type Item = { text: string };
 

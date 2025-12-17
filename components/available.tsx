@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
 import { Icon } from '@iconify/react';
-import heroImage from '@/app/assets/cuterobot.png';
+import heroImage from '@/app/assets/robotmetallic.png';
 
 export function Available() {
   return (
@@ -15,7 +15,7 @@ export function Available() {
         <Image
           src={heroImage}
           alt='Arya FM portrait'
-          className='w-full'
+          className='w-full animate-hero-bob'
           priority
         />
         <div className='mt-2xl flex items-center justify-center gap-2xl'>

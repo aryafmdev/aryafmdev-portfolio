@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import heroImage from '@/app/assets/cuterobot.png';
+import heroImage from '@/app/assets/robotmetallic.png';
 
 export function Hero() {
   return (
@@ -36,7 +36,7 @@ export function Hero() {
       <Image
         src={heroImage}
         alt='Hero image'
-        className='mt-xl block w-full max-w-[1100px] mx-auto'
+        className='mt-4xl block w-full max-w-[1100px] mx-auto animate-hero-bob'
         sizes='(min-width: 768px) 1100px, 100vw'
         priority
       />
