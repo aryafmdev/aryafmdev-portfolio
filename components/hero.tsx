@@ -37,6 +37,22 @@ export function Hero() {
     yRaw.set(parallaxY.get() + bVal);
   });
   const y = useSpring(yRaw, { stiffness: 140, damping: 18 });
+  const shakeX = useMotionValue(0);
+  const shakeRz = useMotionValue(0);
+  const xCombinedRaw = useMotionValue(0);
+  useMotionValueEvent(x, 'change', (vx) => {
+    xCombinedRaw.set(vx + shakeX.get());
+  });
+  useMotionValueEvent(shakeX, 'change', (sx) => {
+    xCombinedRaw.set(x.get() + sx);
+  });
+  const xCombined = useSpring(xCombinedRaw, { stiffness: 140, damping: 18 });
+  const rz = useSpring(shakeRz, { stiffness: 140, damping: 18 });
+  const xShadow = useTransform(xCombined, (v) => v * 0.6);
+  const yShadow = useTransform(y, (v) => v * 0.6);
+  const rxShadow = useTransform(rotateX, (v) => v * 0.5);
+  const ryShadow = useTransform(rotateY, (v) => v * 0.5);
+
   const onMouseMove = useCallback(
     (e: React.MouseEvent) => {
       const nx = e.clientX / window.innerWidth - 0.5;
@@ -46,6 +62,25 @@ export function Hero() {
     },
     [mouseX, mouseY]
   );
+  const onHoverStart = () => {
+    animate(shakeX, [0, 0.8, -0.8, 0], {
+      duration: 0.6,
+      ease: 'easeInOut',
+      repeat: Infinity,
+      repeatType: 'mirror',
+    });
+    animate(shakeRz, [0, 0.3, -0.3, 0], {
+      duration: 0.6,
+      ease: 'easeInOut',
+      repeat: Infinity,
+      repeatType: 'mirror',
+    });
+  };
+  const onHoverEnd = () => {
+    animate(shakeX, 0, { duration: 0.2 });
+    animate(shakeRz, 0, { duration: 0.2 });
+  };
+
   return (
     <>
       <section
@@ -78,15 +113,55 @@ export function Hero() {
         </div>
       </section>
       <motion.div
-        className='mt-6xl block w-full max-w-[1100px] mx-auto'
+        className='mt-4xl block w-full max-w-[1100px] mx-auto'
         style={{ perspective: 1000 }}
         onMouseMove={onMouseMove}
+        onHoverStart={onHoverStart}
+        onHoverEnd={onHoverEnd}
         initial={{ opacity: 0, scale: 0.98, y: 16 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
         whileHover={{ scale: 1.02 }}
       >
-        <motion.div style={{ rotateX, rotateY, x, y, willChange: 'transform' }}>
+        <motion.div
+          className='relative'
+          style={{
+            rotateX,
+            rotateY,
+            rotateZ: rz,
+            x: xCombined,
+            y,
+            willChange: 'transform',
+          }}
+        >
+          <motion.div
+            className='absolute inset-0 -z-10'
+            style={{
+              rotateX: rxShadow,
+              rotateY: ryShadow,
+              x: xShadow,
+              y: yShadow,
+              filter: 'blur(24px)',
+              opacity: 0.78,
+              background:
+                'radial-gradient(60% 60% at 50% 60%, rgba(145,255,2,0.45) 0%, rgba(145,255,2,0.0) 60%)',
+              mixBlendMode: 'screen',
+            }}
+          />
+          <motion.div
+            className='absolute inset-0 -z-20'
+            style={{
+              rotateX: rxShadow,
+              rotateY: ryShadow,
+              x: xShadow,
+              y: yShadow,
+              filter: 'blur(40px)',
+              opacity: 0.6,
+              background:
+                'radial-gradient(80% 80% at 50% 65%, rgba(145,255,2,0.65) 0%, rgba(145,255,2,0.0) 70%)',
+              mixBlendMode: 'screen',
+            }}
+          />
           <Image
             src={heroImage}
             alt='Hero image'
