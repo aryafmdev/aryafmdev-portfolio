@@ -6,6 +6,7 @@ import { ContactModal } from './contact-modal';
 export function Contact() {
   const [open, setOpen] = useState(false);
   const [status, setStatus] = useState<'success' | 'error'>('success');
+  const [details, setDetails] = useState<string | undefined>(undefined);
   const [errors, setErrors] = useState<{
     name?: string;
     email?: string;
@@ -24,7 +25,7 @@ export function Contact() {
       ),
   });
 
-  function onSubmit(e: FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
     const data = new FormData(form);
@@ -35,8 +36,36 @@ export function Contact() {
 
     if (result.success) {
       setErrors({});
-      setStatus('success');
-      setOpen(true);
+      try {
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, message }),
+        });
+        if (res.ok) {
+          setStatus('success');
+          setOpen(true);
+          setDetails(undefined);
+          form.reset();
+        } else {
+          try {
+            const json = await res.json();
+            setDetails(
+              typeof json?.error === 'string'
+                ? json.error
+                : 'Failed to send email'
+            );
+          } catch {
+            setDetails('Failed to send email');
+          }
+          setStatus('error');
+          setOpen(true);
+        }
+      } catch {
+        setDetails('Network error');
+        setStatus('error');
+        setOpen(true);
+      }
     } else {
       const flattened = result.error.flatten();
       const fieldErrors = flattened.fieldErrors;
@@ -153,7 +182,7 @@ export function Contact() {
         <div>
           <button
             type='submit'
-            className='inline-flex w-full items-center justify-center rounded-full bg-primary-200 px-6xl py-xl text-black shadow-neon transition-colors hover:bg-primary-300'
+            className='inline-flex w-full items-center justify-center rounded-full bg-primary-200 px-6xl py-xl text-black shadow-neon transition-colors hover:bg-primary-300 cursor-pointer'
           >
             <span className='text-lg font-bold'>Send Message</span>
           </button>
@@ -163,6 +192,7 @@ export function Contact() {
         open={open}
         status={status}
         onCloseAction={() => setOpen(false)}
+        details={details}
       />
     </section>
   );

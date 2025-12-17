@@ -9,6 +9,7 @@ export function ContactModal(props: {
   open: boolean;
   status: Status;
   onCloseAction: () => void;
+  details?: string;
 }) {
   if (!props.open) return null;
   const isSuccess = props.status === 'success';
@@ -38,11 +39,14 @@ export function ContactModal(props: {
               ? "Thank you for reaching out. I'll get back to you as soon as possible"
               : 'Something went wrong on our end. Please try again in a moment'}
           </p>
+          {!isSuccess && props.details && (
+            <p className='mt-sm text-sm text-neutral-500'>{props.details}</p>
+          )}
           <div className='mt-3xl'>
             {isSuccess ? (
               <a
                 href='#home'
-                className='inline-flex w-full items-center justify-center rounded-full bg-primary-200 px-6xl py-xl text-black shadow-neon transition-colors hover:bg-primary-300'
+                className='inline-flex w-full items-center justify-center rounded-full bg-primary-200 px-6xl py-xl text-black shadow-neon transition-colors hover:bg-primary-300 cursor-pointer'
                 onClick={props.onCloseAction}
               >
                 <span className='text-lg font-bold'>BACK TO HOME</span>
@@ -50,7 +54,7 @@ export function ContactModal(props: {
             ) : (
               <button
                 type='button'
-                className='inline-flex w-full items-center justify-center rounded-full bg-primary-200 px-6xl py-xl text-black shadow-neon transition-colors hover:bg-primary-300'
+                className='inline-flex w-full items-center justify-center rounded-full bg-primary-200 px-6xl py-xl text-black shadow-neon transition-colors hover:bg-primary-300 cursor-pointer'
                 onClick={props.onCloseAction}
               >
                 <span className='text-lg font-bold'>TRY AGAIN</span>
