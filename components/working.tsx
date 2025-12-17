@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
 import { Icon } from '@iconify/react';
-import heroImage from '@/app/assets/hero-image.png';
+import robotImage from '@/app/assets/cuterobot.png';
 
 type Item = { text: string };
 
@@ -86,9 +86,10 @@ export function Working() {
           avatar={
             <span className='inline-flex h-20 w-20 items-center justify-center rounded-full border border-neutral-900 bg-neutral-900/20 shadow-neon overflow-hidden'>
               <Image
-                src={heroImage}
+                src={robotImage}
                 alt='My avatar'
-                className='h-full w-full object-cover'
+                className='h-full w-full object-cover object-top'
+                style={{ objectPosition: 'center 20%' }}
                 priority
               />
             </span>
