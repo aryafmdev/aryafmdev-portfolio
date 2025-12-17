@@ -1,7 +1,51 @@
+'use client';
+import {
+  motion,
+  useMotionValue,
+  useTransform,
+  useSpring,
+  useScroll,
+  useMotionValueEvent,
+  animate,
+} from 'framer-motion';
+import { useCallback } from 'react';
 import Image from 'next/image';
 import heroImage from '@/app/assets/robotmetallic.png';
 
 export function Hero() {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const rotateXRaw = useTransform(mouseY, (v) => v * -4);
+  const rotateYRaw = useTransform(mouseX, (v) => v * 6);
+  const xRaw = useTransform(mouseX, (v) => v * 12);
+  const rotateX = useSpring(rotateXRaw, { stiffness: 140, damping: 18 });
+  const rotateY = useSpring(rotateYRaw, { stiffness: 140, damping: 18 });
+  const x = useSpring(xRaw, { stiffness: 140, damping: 18 });
+  const { scrollY } = useScroll();
+  const parallaxY = useTransform(scrollY, (y) => -y * 0.06);
+  const bob = useMotionValue(0);
+  animate(bob, [0, -6, 0], {
+    duration: 4,
+    ease: 'easeInOut',
+    repeat: Infinity,
+  });
+  const yRaw = useMotionValue(0);
+  useMotionValueEvent(parallaxY, 'change', (p) => {
+    yRaw.set(p + bob.get());
+  });
+  useMotionValueEvent(bob, 'change', (bVal) => {
+    yRaw.set(parallaxY.get() + bVal);
+  });
+  const y = useSpring(yRaw, { stiffness: 140, damping: 18 });
+  const onMouseMove = useCallback(
+    (e: React.MouseEvent) => {
+      const nx = e.clientX / window.innerWidth - 0.5;
+      const ny = e.clientY / window.innerHeight - 0.5;
+      mouseX.set(nx * 2);
+      mouseY.set(ny * 2);
+    },
+    [mouseX, mouseY]
+  );
   return (
     <>
       <section
@@ -33,13 +77,25 @@ export function Hero() {
           </a>
         </div>
       </section>
-      <Image
-        src={heroImage}
-        alt='Hero image'
-        className='mt-4xl block w-full max-w-[1100px] mx-auto animate-hero-bob'
-        sizes='(min-width: 768px) 1100px, 100vw'
-        priority
-      />
+      <motion.div
+        className='mt-6xl block w-full max-w-[1100px] mx-auto'
+        style={{ perspective: 1000 }}
+        onMouseMove={onMouseMove}
+        initial={{ opacity: 0, scale: 0.98, y: 16 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
+        whileHover={{ scale: 1.02 }}
+      >
+        <motion.div style={{ rotateX, rotateY, x, y, willChange: 'transform' }}>
+          <Image
+            src={heroImage}
+            alt='Hero image'
+            className='block w-full'
+            sizes='(min-width: 768px) 1100px, 100vw'
+            priority
+          />
+        </motion.div>
+      </motion.div>
     </>
   );
 }
