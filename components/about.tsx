@@ -25,7 +25,7 @@ export function About() {
         <Image
           src={aboutImage}
           alt='About me work showcase'
-          className='w-full rounded-4xl shadow-neon'
+          className='w-full rounded-4xl shadow-neon bg-black'
           priority
         />
       </div>

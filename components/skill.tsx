@@ -9,19 +9,21 @@ type SkillItem = {
 
 const skills: SkillItem[] = [
   { name: 'React JS', icon: 'logos:react', percent: 90 },
-  { name: 'HTML', icon: 'logos:html-5', percent: 95 },
-  { name: 'CSS', icon: 'logos:css-3', percent: 85 },
+  { name: 'Next.js', icon: 'logos:nextjs-icon', percent: 85 },
   { name: 'JavaScript', icon: 'logos:javascript', percent: 90 },
-  { name: 'TypeScript', icon: 'logos:typescript-icon', percent: 80 },
+  { name: 'TypeScript', icon: 'logos:typescript-icon', percent: 85 },
+  { name: 'Tailwind CSS', icon: 'logos:tailwindcss-icon', percent: 90 },
+  { name: 'MongoDB', icon: 'logos:mongodb-icon', percent: 80 },
   { name: 'ExpressJS', icon: 'devicon:express', percent: 80 },
-  { name: 'MongoDB', icon: 'logos:mongodb-icon', percent: 85 },
-  { name: 'Docker', icon: 'logos:docker-icon', percent: 75 },
+  { name: 'Node.js', icon: 'logos:nodejs-icon', percent: 80 },
+  { name: 'HTML', icon: 'logos:html-5', percent: 95 },
+  { name: 'CSS', icon: 'logos:css-3', percent: 90 },
 ];
 
 function CircleIcon(props: { icon: string }) {
   return (
-    <span className='inline-flex h-16 w-16 items-center justify-center rounded-full border border-neutral-900 bg-neutral-900/20 text-primary-200 neon-icon'>
-      <Icon icon={props.icon} width={28} height={28} />
+    <span className='inline-flex h-16 w-16 items-center justify-center rounded-full border border-neutral-900 bg-neutral-500 text-primary-200 neon-icon'>
+      <Icon icon={props.icon} width={36} height={36} />
     </span>
   );
 }
@@ -40,7 +42,7 @@ export function Skill() {
       >
         SKILLS THAT BRING IDEAS TO LIFE
       </h2>
-      <div className='mt-3xl grid grid-cols-4 gap-2xl max-md:grid-cols-4'>
+      <div className='mt-3xl grid grid-cols-5 gap-2xl'>
         {skills.map((s) => (
           <CircleIcon key={s.name} icon={s.icon} />
         ))}
