@@ -13,7 +13,7 @@ export function ContactModal(props: {
   if (!props.open) return null;
   const isSuccess = props.status === 'success';
   return (
-    <div className='fixed inset-0 z-50 bg-black/60 backdrop-blur-xl flex items-center justify-center'>
+    <div className='fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center'>
       <div className='w-full max-w-[540px] px-xl text-center'>
         <div className='mt-xl rounded-4xl border border-neutral-900 bg-black/70 p-3xl text-neutral-100'>
           <div className='flex justify-center'>

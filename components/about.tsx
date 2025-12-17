@@ -1,5 +1,5 @@
-import Image from 'next/image';
-import aboutImage from '@/app/assets/aboutme-image.png';
+// import Image from 'next/image';
+// import aboutImage from '@/app/assets/aboutme-image.png';
 
 export function About() {
   return (
@@ -22,12 +22,12 @@ export function About() {
         I create smooth and visually appealing user experiences.
       </p>
       <div className='mt-6xl'>
-        <Image
+        {/* <Image
           src={aboutImage}
           alt='About me work showcase'
           className='w-full rounded-4xl shadow-neon bg-black'
           priority
-        />
+        /> */}
       </div>
     </section>
   );

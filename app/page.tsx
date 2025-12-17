@@ -4,9 +4,9 @@ import { Service } from '@/components/service';
 import { About } from '@/components/about';
 import { Skill } from '@/components/skill';
 import { Working } from '@/components/working';
-import { Experience } from '@/components/experience';
+// import { Experience } from '@/components/experience';
 import { Portfolio } from '@/components/portfolio';
-import { Testimonials } from '@/components/testimonials';
+// import { Testimonials } from '@/components/testimonials';
 import { FAQ } from '@/components/faq';
 import { Available } from '@/components/available';
 import { Contact } from '@/components/contact';
@@ -30,15 +30,15 @@ export default function Home() {
         <div className='mt-8xl'>
           <Working />
         </div>
-        <div className='mt-8xl'>
+        {/* <div className='mt-8xl'>
           <Experience />
-        </div>
+        </div> */}
         <div className='mt-8xl'>
           <Portfolio />
         </div>
-        <div className='mt-8xl'>
+        {/* <div className='mt-8xl'>
           <Testimonials />
-        </div>
+        </div> */}
         <div className='mt-8xl'>
           <FAQ />
         </div>
