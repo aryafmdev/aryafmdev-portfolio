@@ -196,7 +196,7 @@ export function Hero() {
         </div>
       </section>
       <motion.div
-        className='mt-4xl block w-full max-w-[1100px] mx-auto'
+        className='mt-8xl block w-full max-w-[1100px] mx-auto'
         ref={containerRef}
         style={{
           perspective: 1000,
