@@ -1,10 +1,10 @@
 import Image, { StaticImageData } from 'next/image';
-import portfolio1 from '@/app/assets/portfolio1.png';
-import portfolio2 from '@/app/assets/portfolio2.png';
-import portfolio3 from '@/app/assets/portfolio3.png';
-import portfolio4 from '@/app/assets/portfolio4.png';
-import portfolio5 from '@/app/assets/portfolio5.png';
-import portfolio6 from '@/app/assets/portfolio6.png';
+import portfolio1 from '@/app/assets/cinemapedia.png';
+import portfolio2 from '@/app/assets/sociality.png';
+import portfolio3 from '@/app/assets/booky.png';
+import portfolio4 from '@/app/assets/foody.png';
+// import portfolio5 from '@/app/assets/portfolio5.png';
+// import portfolio6 from '@/app/assets/portfolio6.png';
 
 type PortfolioItem = {
   title: string;
@@ -14,41 +14,41 @@ type PortfolioItem = {
 
 const items: PortfolioItem[] = [
   {
-    title: 'Selected Work',
+    title: 'CinemaPedia',
     description:
       'Lorem ipsum dolor sit amet consectetur. Aenean sed maximus aliquam velit.',
     image: portfolio1,
   },
   {
-    title: 'Selected Work',
+    title: 'Sociality',
     description:
       'Lorem ipsum dolor sit amet consectetur. Aenean sed maximus aliquam velit.',
     image: portfolio2,
   },
   {
-    title: 'Selected Work',
+    title: 'Booky',
     description:
       'Lorem ipsum dolor sit amet consectetur. Aenean sed maximus aliquam velit.',
     image: portfolio3,
   },
   {
-    title: 'Selected Work',
+    title: 'Foody',
     description:
       'Lorem ipsum dolor sit amet consectetur. Aenean sed maximus aliquam velit.',
     image: portfolio4,
   },
-  {
-    title: 'Selected Work',
-    description:
-      'Lorem ipsum dolor sit amet consectetur. Aenean sed maximus aliquam velit.',
-    image: portfolio5,
-  },
-  {
-    title: 'Selected Work',
-    description:
-      'Lorem ipsum dolor sit amet consectetur. Aenean sed maximus aliquam velit.',
-    image: portfolio6,
-  },
+  // {
+  //   title: 'Selected Work',
+  //   description:
+  //     'Lorem ipsum dolor sit amet consectetur. Aenean sed maximus aliquam velit.',
+  //   image: portfolio5,
+  // },
+  // {
+  //   title: 'Selected Work',
+  //   description:
+  //     'Lorem ipsum dolor sit amet consectetur. Aenean sed maximus aliquam velit.',
+  //   image: portfolio6,
+  // },
 ];
 
 export function Portfolio() {
