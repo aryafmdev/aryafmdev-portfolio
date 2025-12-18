@@ -1,4 +1,3 @@
-'use client';
 import { Icon } from '@iconify/react';
 
 type ExpItem = {
@@ -89,4 +88,3 @@ export function Experience() {
     </section>
   );
 }
-

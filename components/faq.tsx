@@ -1,4 +1,3 @@
-'use client';
 import { Icon } from '@iconify/react';
 
 type QA = {
@@ -57,4 +56,3 @@ export function FAQ() {
     </section>
   );
 }
-

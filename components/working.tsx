@@ -1,4 +1,3 @@
-'use client';
 import Image from 'next/image';
 import { Icon } from '@iconify/react';
 import robotImage from '@/app/assets/robotsmiling.png';

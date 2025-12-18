@@ -9,7 +9,7 @@ import { Portfolio } from '@/components/portfolio';
 import { FAQ } from '@/components/faq';
 import { Footer } from '@/components/footer';
 import { Contact } from '@/components/contact';
-import { HeroClient } from '@/components/HeroClient';
+import { Hero } from '@/components/hero';
 import { AvailableClient } from '@/components/AvailableClient';
 
 export default function Home() {
@@ -17,7 +17,7 @@ export default function Home() {
     <div className='bg-dark font-sans'>
       <Header />
       <main className='mx-auto w-full px-4xl py-xl text-neutral-100'>
-        <HeroClient />
+        <Hero />
         <div className='mt-8xl'>
           <Service />
         </div>

@@ -11,6 +11,7 @@ import {
   useMotionValueEvent,
   animate,
 } from 'framer-motion';
+import { LazyMotion, domAnimation } from 'framer-motion';
 import { useCallback, useRef, useEffect } from 'react';
 
 export function Available() {
@@ -187,6 +188,7 @@ export function Available() {
         AVAILABLE FOR WORK
       </h2> */}
 
+      <LazyMotion features={domAnimation}>
       <div ref={containerRef} className='relative mt-xl mx-auto max-w-[520px]'>
         <motion.div
           className='relative block w-full overflow-hidden pb-4xl'
@@ -284,6 +286,7 @@ export function Available() {
           </div>
         </div>
       </div>
+      </LazyMotion>
     </section>
   );
 }
