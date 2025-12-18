@@ -8,7 +8,7 @@ import {
   useMotionValueEvent,
   animate,
 } from 'framer-motion';
-import { useCallback, useRef } from 'react';
+import { useCallback, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import heroImage from '@/app/assets/robotsmiling.png';
 
@@ -24,11 +24,6 @@ export function Hero() {
   const { scrollY } = useScroll();
   const parallaxY = useTransform(scrollY, (y) => -y * 0.06);
   const bob = useMotionValue(0);
-  animate(bob, [0, -16, 0, 16, 0], {
-    duration: 7,
-    ease: 'easeInOut',
-    repeat: Infinity,
-  });
   const yRaw = useMotionValue(0);
   useMotionValueEvent(parallaxY, 'change', (p) => {
     yRaw.set(p + bob.get());
@@ -43,16 +38,34 @@ export function Hero() {
   const floatRz = useMotionValue(0);
   const xCombinedRaw = useMotionValue(0);
   const rzCombinedRaw = useMotionValue(0);
-  animate(floatX, [0, 8, 0, -8, 0], {
-    duration: 8,
-    ease: 'easeInOut',
-    repeat: Infinity,
-  });
-  animate(floatRz, [0, 0.8, 0, -0.8, 0], {
-    duration: 8,
-    ease: 'easeInOut',
-    repeat: Infinity,
-  });
+  useEffect(() => {
+    const start = () => {
+      animate(bob, [0, -16, 0, 16, 0], {
+        duration: 7,
+        ease: 'easeInOut',
+        repeat: Infinity,
+      });
+      animate(floatX, [0, 8, 0, -8, 0], {
+        duration: 8,
+        ease: 'easeInOut',
+        repeat: Infinity,
+      });
+      animate(floatRz, [0, 0.8, 0, -0.8, 0], {
+        duration: 8,
+        ease: 'easeInOut',
+        repeat: Infinity,
+      });
+    };
+    const w = window as Window & {
+      requestIdleCallback?: (cb: () => void) => void;
+    };
+    const ric = w.requestIdleCallback;
+    if (typeof ric === 'function') {
+      ric(start);
+    } else {
+      setTimeout(start, 0);
+    }
+  }, [bob, floatX, floatRz]);
   useMotionValueEvent(x, 'change', (vx) => {
     xCombinedRaw.set(vx + shakeX.get() + floatX.get());
   });
@@ -196,7 +209,7 @@ export function Hero() {
         </div>
       </section>
       <motion.div
-        className='mt-8xl block w-full max-w-[1100px] mx-auto'
+        className='relative mt-8xl block w-full max-w-[1100px] mx-auto'
         ref={containerRef}
         style={{
           perspective: 1000,

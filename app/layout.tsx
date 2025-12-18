@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Michroma } from 'next/font/google';
 import './globals.css';
-import { SpaceBackground } from '@/components/SpaceBackground';
+import { SpaceBackgroundClient } from '@/components/SpaceBackgroundClient';
 
 const michroma = Michroma({
   variable: '--font-michroma',
@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={`${michroma.variable} antialiased`}>
-        <SpaceBackground />
+        <SpaceBackgroundClient />
         {children}
       </body>
     </html>

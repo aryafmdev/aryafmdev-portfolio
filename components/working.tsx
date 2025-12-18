@@ -90,7 +90,6 @@ export function Working() {
                 alt='My avatar'
                 className='h-full w-full object-cover object-top'
                 style={{ objectPosition: 'center 20%' }}
-                priority
               />
             </span>
           }

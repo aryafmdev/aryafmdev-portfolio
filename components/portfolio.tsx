@@ -81,7 +81,6 @@ export function Portfolio() {
                 src={it.image}
                 alt={`${it.title} ${idx + 1}`}
                 className='w-full object-cover'
-                priority={idx < 2}
               />
             </div>
             <h3 className='mt-xl text-xl font-semibold text-neutral-100'>

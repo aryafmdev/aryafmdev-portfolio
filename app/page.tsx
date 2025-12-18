@@ -1,5 +1,4 @@
 import { Header } from '@/components/header';
-import { Hero } from '@/components/hero';
 import { Service } from '@/components/service';
 import { About } from '@/components/about';
 import { Skill } from '@/components/skill';
@@ -8,16 +7,17 @@ import { Working } from '@/components/working';
 import { Portfolio } from '@/components/portfolio';
 // import { Testimonials } from '@/components/testimonials';
 import { FAQ } from '@/components/faq';
-import { Available } from '@/components/available';
-import { Contact } from '@/components/contact';
 import { Footer } from '@/components/footer';
+import { Contact } from '@/components/contact';
+import { HeroClient } from '@/components/HeroClient';
+import { AvailableClient } from '@/components/AvailableClient';
 
 export default function Home() {
   return (
     <div className='bg-dark font-sans'>
       <Header />
       <main className='mx-auto w-full px-4xl py-xl text-neutral-100'>
-        <Hero />
+        <HeroClient />
         <div className='mt-8xl'>
           <Service />
         </div>
@@ -43,7 +43,7 @@ export default function Home() {
           <FAQ />
         </div>
         <div className='mt-8xl'>
-          <Available />
+          <AvailableClient />
         </div>
         <div className='mt-8xl'>
           <Contact />

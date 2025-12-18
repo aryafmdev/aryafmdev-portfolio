@@ -11,7 +11,7 @@ import {
   useMotionValueEvent,
   animate,
 } from 'framer-motion';
-import { useCallback, useRef } from 'react';
+import { useCallback, useRef, useEffect } from 'react';
 
 export function Available() {
   const mouseX = useMotionValue(0);
@@ -29,11 +29,6 @@ export function Available() {
   });
   const parallaxY = useTransform(scrollYProgress, [0, 1], [0, 24]);
   const bob = useMotionValue(0);
-  animate(bob, [0, -16, 0, 16, 0], {
-    duration: 7,
-    ease: 'easeInOut',
-    repeat: Infinity,
-  });
   const yRaw = useMotionValue(0);
   const baseY = 8;
   useMotionValueEvent(parallaxY, 'change', (p) => {
@@ -49,16 +44,34 @@ export function Available() {
   const floatRz = useMotionValue(0);
   const xCombinedRaw = useMotionValue(0);
   const rzCombinedRaw = useMotionValue(0);
-  animate(floatX, [0, 8, 0, -8, 0], {
-    duration: 8,
-    ease: 'easeInOut',
-    repeat: Infinity,
-  });
-  animate(floatRz, [0, 0.8, 0, -0.8, 0], {
-    duration: 8,
-    ease: 'easeInOut',
-    repeat: Infinity,
-  });
+  useEffect(() => {
+    const start = () => {
+      animate(bob, [0, -16, 0, 16, 0], {
+        duration: 7,
+        ease: 'easeInOut',
+        repeat: Infinity,
+      });
+      animate(floatX, [0, 8, 0, -8, 0], {
+        duration: 8,
+        ease: 'easeInOut',
+        repeat: Infinity,
+      });
+      animate(floatRz, [0, 0.8, 0, -0.8, 0], {
+        duration: 8,
+        ease: 'easeInOut',
+        repeat: Infinity,
+      });
+    };
+    const w = window as Window & {
+      requestIdleCallback?: (cb: () => void) => void;
+    };
+    const ric = w.requestIdleCallback;
+    if (typeof ric === 'function') {
+      ric(start);
+    } else {
+      setTimeout(start, 0);
+    }
+  }, [bob, floatX, floatRz]);
   useMotionValueEvent(x, 'change', (vx) => {
     xCombinedRaw.set(vx + shakeX.get() + floatX.get());
   });
@@ -174,7 +187,7 @@ export function Available() {
         AVAILABLE FOR WORK
       </h2> */}
 
-      <div ref={containerRef} className='mt-xl mx-auto max-w-[520px]'>
+      <div ref={containerRef} className='relative mt-xl mx-auto max-w-[520px]'>
         <motion.div
           className='relative block w-full overflow-hidden pb-4xl'
           style={{
@@ -218,7 +231,6 @@ export function Available() {
               src={heroImage}
               alt='Arya FM portrait'
               className='block w-full'
-              priority
             />
           </motion.div>
         </motion.div>

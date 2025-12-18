@@ -27,7 +27,6 @@ export function ContactModal(props: {
                     : 'Message failed to send'
                 }
                 className='h-[120px] w-[120px] object-contain'
-                priority
               />
             </span>
           </div>
