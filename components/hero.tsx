@@ -10,7 +10,7 @@ import {
 } from 'framer-motion';
 import { useCallback, useRef } from 'react';
 import Image from 'next/image';
-import heroImage from '@/app/assets/robotmetallic.png';
+import heroImage from '@/app/assets/robotsmiling.png';
 
 export function Hero() {
   const mouseX = useMotionValue(0);

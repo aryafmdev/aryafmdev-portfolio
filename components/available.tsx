@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
 import { Icon } from '@iconify/react';
-import heroImage from '@/app/assets/robotmetallic.png';
+import heroImage from '@/app/assets/robotsmiling.png';
 import {
   motion,
   useMotionValue,
