@@ -1,15 +1,31 @@
 import { Header } from '@/components/header';
-import { Service } from '@/components/service';
-import { About } from '@/components/about';
-import { Skill } from '@/components/skill';
-import { Working } from '@/components/working';
-// import { Experience } from '@/components/experience';
-import { Portfolio } from '@/components/portfolio';
-// import { Testimonials } from '@/components/testimonials';
-import { FAQ } from '@/components/faq';
-import { Footer } from '@/components/footer';
-import { Contact } from '@/components/contact';
+import dynamic from 'next/dynamic';
+const ServiceLazy = dynamic(() =>
+  import('@/components/service').then((m) => m.Service)
+);
+const AboutLazy = dynamic(() =>
+  import('@/components/about').then((m) => m.About)
+);
+const SkillLazy = dynamic(() =>
+  import('@/components/skill').then((m) => m.Skill)
+);
+const WorkingLazy = dynamic(() =>
+  import('@/components/working').then((m) => m.Working)
+);
+// const ExperienceLazy = dynamic(() => import('@/components/experience').then((m) => m.Experience));
+const PortfolioLazy = dynamic(() =>
+  import('@/components/portfolio').then((m) => m.Portfolio)
+);
+// const TestimonialsLazy = dynamic(() => import('@/components/testimonials').then((m) => m.Testimonials));
+const FAQLazy = dynamic(() => import('@/components/faq').then((m) => m.FAQ));
+const FooterLazy = dynamic(() =>
+  import('@/components/footer').then((m) => m.Footer)
+);
+const ContactLazy = dynamic(() =>
+  import('@/components/contact').then((m) => m.Contact)
+);
 import { Hero } from '@/components/hero';
+import { InViewClient } from '@/components/InViewClient';
 
 export default function Home() {
   return (
@@ -18,34 +34,54 @@ export default function Home() {
       <main className='mx-auto w-full px-4xl py-xl text-neutral-100'>
         <Hero />
         <div className='mt-8xl'>
-          <Service />
+          <InViewClient>
+            <ServiceLazy />
+          </InViewClient>
         </div>
         <div className='mt-8xl'>
-          <About />
+          <InViewClient>
+            <AboutLazy />
+          </InViewClient>
         </div>
         <div className='mt-8xl'>
-          <Skill />
+          <InViewClient>
+            <SkillLazy />
+          </InViewClient>
         </div>
         <div className='mt-8xl'>
-          <Working />
+          <InViewClient>
+            <WorkingLazy />
+          </InViewClient>
         </div>
         {/* <div className='mt-8xl'>
-          <Experience />
+          <InViewClient>
+            <ExperienceLazy />
+          </InViewClient>
         </div> */}
         <div className='mt-8xl'>
-          <Portfolio />
+          <InViewClient>
+            <PortfolioLazy />
+          </InViewClient>
         </div>
         {/* <div className='mt-8xl'>
-          <Testimonials />
+          <InViewClient>
+            <TestimonialsLazy />
+          </InViewClient>
         </div> */}
         <div className='mt-8xl'>
-          <FAQ />
+          <InViewClient>
+            <FAQLazy />
+          </InViewClient>
         </div>
         <div className='mt-8xl'>
-          <Contact />
+          <InViewClient>
+            <ContactLazy />
+          </InViewClient>
         </div>
         <div className='mt-8xl'>
-          <Footer />
+          <InViewClient>
+            <FooterLazy />
+          </InViewClient>
         </div>
       </main>
     </div>
