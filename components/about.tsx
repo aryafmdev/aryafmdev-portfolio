@@ -13,7 +13,9 @@ export function About() {
         className='mt-md text-display-xs font-extrabold uppercase'
       >
         Crafting seamless
+        <br />
         <span className='text-primary-200 neon-text'> High-performance web </span>
+        <br />
         experiences
       </h2>
       <p className='mt-2xl text-md text-neutral-400'>

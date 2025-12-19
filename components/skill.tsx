@@ -34,37 +34,43 @@ export function Skill() {
       aria-labelledby='skill-title'
       className='text-neutral-100 max-w-[1280px] mx-auto'
     >
-      <p className='text-md font-semibold text-primary-200 neon-text'>SKILLS</p>
-      <h2
-        id='skill-title'
-        className='mt-md text-display-sm font-extrabold uppercase'
-      >
-        SKILLS THAT BRING IDEAS TO LIFE
-      </h2>
-      <div className='mt-3xl grid grid-cols-5 gap-2xl'>
-        {skills.map((s) => (
-          <CircleIcon key={s.name} icon={s.icon} />
-        ))}
-      </div>
-      <div className='mt-6xl space-y-2xl'>
-        {skills.map((s) => (
-          <div key={s.name} className='w-full'>
-            <div className='relative h-12 w-full rounded-full bg-neutral-900'>
-              <div
-                className='absolute left-0 top-0 h-full rounded-full bg-primary-200 shadow-neon'
-                style={{ width: `${s.percent}%` }}
-              />
-              <div className='relative z-10 flex h-full items-center px-2xl'>
-                <span className='text-lg font-semibold text-black'>
-                  {s.name}
-                </span>
+      <div className='md:grid md:grid-cols-2 md:items-start md:gap-xs'>
+        <div>
+          <p className='text-md font-semibold text-primary-200 neon-text'>
+            SKILLS
+          </p>
+          <h2
+            id='skill-title'
+            className='mt-md text-display-sm font-extrabold uppercase'
+          >
+            SKILLS THAT BRING IDEAS TO LIFE
+          </h2>
+          <div className='mt-3xl grid grid-cols-5 gap-2xl md:grid-cols-3'>
+            {skills.map((s) => (
+              <CircleIcon key={s.name} icon={s.icon} />
+            ))}
+          </div>
+        </div>
+        <div className='mt-6xl md:mt-0 space-y-2xl'>
+          {skills.map((s) => (
+            <div key={s.name} className='w-full'>
+              <div className='relative h-12 w-full rounded-full bg-neutral-900'>
+                <div
+                  className='absolute left-0 top-0 h-full rounded-full bg-primary-200 shadow-neon'
+                  style={{ width: `${s.percent}%` }}
+                />
+                <div className='relative z-10 flex h-full items-center px-2xl pr-2xl justify-between'>
+                  <span className='text-lg font-semibold text-black'>
+                    {s.name}
+                  </span>
+                  <span className='inline-block text-md text-neutral-100'>
+                    {s.percent}%
+                  </span>
+                </div>
               </div>
             </div>
-            <div className='mt-sm text-right text-md text-neutral-400'>
-              {s.percent}%
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );

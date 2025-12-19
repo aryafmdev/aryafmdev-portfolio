@@ -24,7 +24,7 @@ export function Service() {
       aria-labelledby='service-title'
       className='text-neutral-100 max-w-[1280px] mx-auto'
     >
-      <div className='md:grid md:grid-cols-2 md:items-end md:gap-xs'>
+      <div className='md:grid md:grid-cols-2 md:items-start md:gap-xs'>
         <div>
           <p className='text-md font-semibold text-primary-200 neon-text'>
             SERVICE
