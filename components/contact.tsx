@@ -2,6 +2,7 @@
 import { FormEvent, useState } from 'react';
 import { z } from 'zod';
 import { ContactModal } from './contact-modal';
+import { AvailableClient } from '@/components/AvailableClient';
 
 export function Contact() {
   const [open, setOpen] = useState(false);
@@ -96,98 +97,105 @@ export function Contact() {
       aria-labelledby='contact-title'
       className='text-neutral-100 max-w-[1280px] mx-auto'
     >
-      <p className='text-md font-semibold text-primary-200 neon-text'>
+      <p className='text-md font-semibold text-primary-200 neon-text text-center'>
         CONTACT
       </p>
       <h2
         id='contact-title'
-        className='mt-md text-display-sm font-extrabold uppercase'
+        className='mt-md text-display-sm font-extrabold uppercase text-center'
       >
         LET’S GET IN TOUCH
       </h2>
 
-      <form
-        onSubmit={onSubmit}
-        className='mt-6xl mx-auto w-full space-y-3xl'
-        noValidate
-      >
-        <div>
-          <label htmlFor='name' className='text-md text-neutral-100'>
-            Name
-          </label>
-          <input
-            id='name'
-            name='name'
-            type='text'
-            autoComplete='name'
-            required
-            className='mt-sm w-full rounded-xl border border-neutral-900 bg-neutral-900/20 px-2xl py-xl text-neutral-100 placeholder-neutral-500'
-            placeholder='Your name'
-            aria-label='Name'
-            aria-invalid={Boolean(errors.name) || undefined}
-            aria-describedby={errors.name ? 'name-error' : undefined}
-          />
-          {errors.name && (
-            <p id='name-error' className='mt-xs text-sm text-red-500'>
-              {errors.name}
-            </p>
-          )}
+      <div className='mt-xl md:grid md:grid-cols-2 md:gap-xl md:items-center'>
+        <div className='md:pr-xl'>
+          <AvailableClient />
         </div>
-
         <div>
-          <label htmlFor='email' className='text-md text-neutral-100'>
-            Email
-          </label>
-          <input
-            id='email'
-            name='email'
-            type='email'
-            autoComplete='email'
-            required
-            className='mt-sm w-full rounded-xl border border-neutral-900 bg-neutral-900/20 px-2xl py-xl text-neutral-100 placeholder-neutral-500'
-            placeholder='you@example.com'
-            aria-label='Email'
-            aria-invalid={Boolean(errors.email) || undefined}
-            aria-describedby={errors.email ? 'email-error' : undefined}
-          />
-          {errors.email && (
-            <p id='email-error' className='mt-xs text-sm text-red-500'>
-              {errors.email}
-            </p>
-          )}
-        </div>
-
-        <div>
-          <label htmlFor='message' className='text-md text-neutral-100'>
-            Message
-          </label>
-          <textarea
-            id='message'
-            name='message'
-            rows={6}
-            required
-            className='mt-sm w-full rounded-xl border border-neutral-900 bg-neutral-900/20 px-2xl py-xl text-neutral-100 placeholder-neutral-500'
-            placeholder='Write your message...'
-            aria-label='Message'
-            aria-invalid={Boolean(errors.message) || undefined}
-            aria-describedby={errors.message ? 'message-error' : undefined}
-          />
-          {errors.message && (
-            <p id='message-error' className='mt-xs text-sm text-red-500'>
-              {errors.message}
-            </p>
-          )}
-        </div>
-
-        <div>
-          <button
-            type='submit'
-            className='inline-flex w-full items-center justify-center rounded-full bg-primary-200 px-6xl py-xl text-black shadow-neon transition-colors hover:bg-primary-300 cursor-pointer'
+          <form
+            onSubmit={onSubmit}
+            className='mx-auto w-full space-y-3xl md:space-y-3xl'
+            noValidate
           >
-            <span className='text-lg font-bold'>Send Message</span>
-          </button>
+            <div>
+              <label htmlFor='name' className='text-md text-neutral-100'>
+                Name
+              </label>
+              <input
+                id='name'
+                name='name'
+                type='text'
+                autoComplete='name'
+                required
+                className='mt-sm w-full rounded-xl border border-neutral-900 bg-neutral-900/20 px-2xl py-xl text-neutral-100 placeholder-neutral-500'
+                placeholder='Your name'
+                aria-label='Name'
+                aria-invalid={Boolean(errors.name) || undefined}
+                aria-describedby={errors.name ? 'name-error' : undefined}
+              />
+              {errors.name && (
+                <p id='name-error' className='mt-xs text-sm text-red-500'>
+                  {errors.name}
+                </p>
+              )}
+            </div>
+
+            <div>
+              <label htmlFor='email' className='text-md text-neutral-100'>
+                Email
+              </label>
+              <input
+                id='email'
+                name='email'
+                type='email'
+                autoComplete='email'
+                required
+                className='mt-sm w-full rounded-xl border border-neutral-900 bg-neutral-900/20 px-2xl py-xl text-neutral-100 placeholder-neutral-500'
+                placeholder='you@example.com'
+                aria-label='Email'
+                aria-invalid={Boolean(errors.email) || undefined}
+                aria-describedby={errors.email ? 'email-error' : undefined}
+              />
+              {errors.email && (
+                <p id='email-error' className='mt-xs text-sm text-red-500'>
+                  {errors.email}
+                </p>
+              )}
+            </div>
+
+            <div>
+              <label htmlFor='message' className='text-md text-neutral-100'>
+                Message
+              </label>
+              <textarea
+                id='message'
+                name='message'
+                rows={6}
+                required
+                className='mt-sm w-full rounded-xl border border-neutral-900 bg-neutral-900/20 px-2xl py-xl text-neutral-100 placeholder-neutral-500'
+                placeholder='Write your message...'
+                aria-label='Message'
+                aria-invalid={Boolean(errors.message) || undefined}
+                aria-describedby={errors.message ? 'message-error' : undefined}
+              />
+              {errors.message && (
+                <p id='message-error' className='mt-xs text-sm text-red-500'>
+                  {errors.message}
+                </p>
+              )}
+            </div>
+
+            <div>
+              <button
+                type='submit'
+                className='inline-flex w-full items-center justify-center rounded-full bg-primary-200 px-6xl py-xl text-black shadow-neon transition-colors hover:bg-primary-300 cursor-pointer'
+              >
+                <span className='text-lg font-bold'>Send Message</span>
+              </button>
+            </div>
+          </form>
         </div>
-      </form>
+      </div>
       <ContactModal
         open={open}
         status={status}

@@ -10,7 +10,6 @@ import { FAQ } from '@/components/faq';
 import { Footer } from '@/components/footer';
 import { Contact } from '@/components/contact';
 import { Hero } from '@/components/hero';
-import { AvailableClient } from '@/components/AvailableClient';
 
 export default function Home() {
   return (
@@ -41,9 +40,6 @@ export default function Home() {
         </div> */}
         <div className='mt-8xl'>
           <FAQ />
-        </div>
-        <div className='mt-8xl'>
-          <AvailableClient />
         </div>
         <div className='mt-8xl'>
           <Contact />

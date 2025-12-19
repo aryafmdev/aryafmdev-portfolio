@@ -191,7 +191,7 @@ export function Available() {
       <LazyMotion features={domAnimation}>
       <div ref={containerRef} className='relative mt-xl mx-auto max-w-[520px]'>
         <motion.div
-          className='relative block w-full overflow-hidden pb-4xl'
+          className='relative block w-full overflow-hidden pb-6xl'
           style={{
             perspective: 1000,
             scale: finalScale,
