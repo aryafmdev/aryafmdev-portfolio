@@ -179,103 +179,104 @@ export function Hero() {
   };
 
   return (
-    <>
-      <section
-        id='hero'
-        aria-labelledby='hero-title'
-        className='text-neutral-100 max-w-[1280px] mx-auto'
-      >
-        <div className='flex items-center gap-md'>
-          {/* <div className='h-[2px] w-8 bg-neutral-100/80' /> */}
-          <p className='text-md font-semibold'>
-            Hi, I am Arya FM <br /> Software Engineer (Frontend Heavy)
-          </p>
-        </div>
-        <h1 className='mt-2xl text-display-sm font-extrabold uppercase'>
-          Building fast &amp;{' '}
-          <span className='text-primary-200 neon-text'>Interactive</span> web
-          experiences.
-        </h1>
-        <p className='mt-2xl text-md text-neutral-400'>
-          Bridging creativity and functionality to deliver stunning,
-          user-friendly web applications
-        </p>
-        <div className='mt-6xl'>
-          <a
-            href='#contact'
-            className='inline-flex w-full items-center justify-center rounded-full bg-primary-200 px-6xl py-xl text-black shadow-neon transition-colors hover:bg-primary-300'
-          >
-            <span className='text-lg font-bold'>HIRE ME</span>
-          </a>
-        </div>
-      </section>
-      <LazyMotion features={domAnimation}>
-        <motion.div
-          className='relative mt-8xl block w-full max-w-[1100px] mx-auto'
-          ref={containerRef}
-          style={{
-            perspective: 1000,
-            scale: finalScale,
-            opacity: revealOpacity,
-            y: finalY,
-            filter: revealBlur,
-            willChange: 'transform, filter',
-          }}
-          onMouseMove={onMouseMove}
-          onHoverStart={onHoverStart}
-          onHoverEnd={onHoverEnd}
-          whileHover={{ scale: 1.02 }}
+    <div className='max-w-[1280px] mx-auto'>
+      <div className='md:grid md:grid-cols-2 md:items-center md:gap-xs'>
+        <section
+          id='hero'
+          aria-labelledby='hero-title'
+          className='text-neutral-100 max-w-[1280px] mx-auto md:mx-0'
         >
+          <div className='flex items-center gap-md'>
+            <p className='text-md font-semibold'>
+              Hi, I am Arya FM <br /> Software Engineer (Frontend Heavy)
+            </p>
+          </div>
+          <h1 className='mt-2xl text-display-sm font-extrabold uppercase'>
+            Building fast &amp;{' '}
+            <span className='text-primary-200 neon-text'>Interactive</span> web
+            experiences.
+          </h1>
+          <p className='mt-2xl text-md text-neutral-400'>
+            Bridging creativity and functionality to deliver stunning,
+            user-friendly web applications
+          </p>
+          <div className='mt-6xl'>
+            <a
+              href='#contact'
+              className='inline-flex w-full items-center justify-center rounded-full bg-primary-200 px-6xl py-xl text-black shadow-neon transition-colors hover:bg-primary-300'
+            >
+              <span className='text-lg font-bold'>HIRE ME</span>
+            </a>
+          </div>
+        </section>
+        <LazyMotion features={domAnimation}>
           <motion.div
-            className='relative'
+            className='relative mt-8xl block w-full max-w-[1100px] mx-auto md:mt-0 md:mx-0 md:justify-self-end'
+            ref={containerRef}
             style={{
-              rotateX,
-              rotateY,
-              rotateZ: rz,
-              x: xCombined,
-              y,
-              willChange: 'transform',
+              perspective: 1000,
+              scale: finalScale,
+              opacity: revealOpacity,
+              y: finalY,
+              filter: revealBlur,
+              willChange: 'transform, filter',
             }}
+            onMouseMove={onMouseMove}
+            onHoverStart={onHoverStart}
+            onHoverEnd={onHoverEnd}
+            whileHover={{ scale: 1.02 }}
           >
             <motion.div
-              className='absolute inset-0 -z-10'
+              className='relative'
               style={{
-                rotateX: rxShadow,
-                rotateY: ryShadow,
-                x: xShadow,
-                y: yShadow,
-                filter: 'blur(24px)',
-                opacity: 0.78,
-                background:
-                  'radial-gradient(60% 60% at 50% 60%, rgba(145,255,2,0.45) 0%, rgba(145,255,2,0.0) 60%)',
-                mixBlendMode: 'screen',
+                rotateX,
+                rotateY,
+                rotateZ: rz,
+                x: xCombined,
+                y,
+                willChange: 'transform',
               }}
-            />
-            <motion.div
-              className='absolute inset-0 -z-20'
-              style={{
-                rotateX: rxShadow,
-                rotateY: ryShadow,
-                x: xShadow,
-                y: yShadow,
-                filter: 'blur(40px)',
-                opacity: 0.6,
-                background:
-                  'radial-gradient(80% 80% at 50% 65%, rgba(145,255,2,0.65) 0%, rgba(145,255,2,0.0) 70%)',
-                mixBlendMode: 'screen',
-              }}
-            />
-            <Image
-              src={heroImage}
-              alt='Hero image'
-              className='block w-full'
-              sizes='(min-width: 768px) 1100px, 100vw'
-              placeholder='blur'
-              priority
-            />
+            >
+              <motion.div
+                className='absolute inset-0 -z-10'
+                style={{
+                  rotateX: rxShadow,
+                  rotateY: ryShadow,
+                  x: xShadow,
+                  y: yShadow,
+                  filter: 'blur(24px)',
+                  opacity: 0.78,
+                  background:
+                    'radial-gradient(60% 60% at 50% 60%, rgba(145,255,2,0.45) 0%, rgba(145,255,2,0.0) 60%)',
+                  mixBlendMode: 'screen',
+                }}
+              />
+              <motion.div
+                className='absolute inset-0 -z-20'
+                style={{
+                  rotateX: rxShadow,
+                  rotateY: ryShadow,
+                  x: xShadow,
+                  y: yShadow,
+                  filter: 'blur(40px)',
+                  opacity: 0.6,
+                  background:
+                    'radial-gradient(80% 80% at 50% 65%, rgba(145,255,2,0.65) 0%, rgba(145,255,2,0.0) 70%)',
+                  mixBlendMode: 'screen',
+                }}
+              />
+              <Image
+                src={heroImage}
+                alt='Hero image'
+                className='block w-full'
+                sizes='(min-width: 768px) 1100px, 100vw'
+                placeholder='blur'
+                priority
+              />
+            </motion.div>
           </motion.div>
-        </motion.div>
-      </LazyMotion>
-    </>
+        </LazyMotion>
+      </div>
+    </div>
   );
 }

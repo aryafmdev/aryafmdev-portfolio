@@ -54,7 +54,6 @@ export function Header() {
     >
       <div className='mx-auto flex items-center justify-between px-xl md:px-2xl lg:px-4xl xl:px-6xl 2xl:px-8xl py-lg'>
         <div className='flex items-center gap-md'>
-          <div className='h-[2px] w-8 bg-neutral-100/80' />
           <Link
             href='#home'
             className='text-display-sm font-extrabold text-primary-200 neon-text'
