@@ -188,9 +188,9 @@ export function Contact() {
             <div>
               <button
                 type='submit'
-                className='inline-flex w-full items-center justify-center rounded-full bg-primary-200 px-6xl py-xl text-black shadow-neon transition-colors hover:bg-primary-300 cursor-pointer'
+                className='inline-flex w-full items-center justify-center rounded-full bg-primary-200 px-6xl py-xl text-black shadow-neon transition-colors hover:bg-primary-300 cursor-pointer md:mt-7xl'
               >
-                <span className='text-lg font-bold'>Send Message</span>
+                <span className='text-lg font-bold '>Send Message</span>
               </button>
             </div>
           </form>
