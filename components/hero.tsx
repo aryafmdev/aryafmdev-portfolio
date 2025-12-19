@@ -40,7 +40,10 @@ export function Hero() {
   const xCombinedRaw = useMotionValue(0);
   const rzCombinedRaw = useMotionValue(0);
   useEffect(() => {
+    let started = false;
     const start = () => {
+      if (started) return;
+      started = true;
       animate(bob, [0, -16, 0, 16, 0], {
         duration: 7,
         ease: 'easeInOut',
@@ -64,8 +67,28 @@ export function Hero() {
     if (typeof ric === 'function') {
       ric(start);
     } else {
-      setTimeout(start, 0);
+      setTimeout(start, 2400);
     }
+    const onFirstInteraction = () => {
+      start();
+      window.removeEventListener('scroll', onFirstInteraction);
+      window.removeEventListener('mousemove', onFirstInteraction);
+      window.removeEventListener('touchstart', onFirstInteraction);
+      window.removeEventListener('click', onFirstInteraction);
+      window.removeEventListener('keydown', onFirstInteraction);
+    };
+    window.addEventListener('scroll', onFirstInteraction, { passive: true });
+    window.addEventListener('mousemove', onFirstInteraction, { passive: true });
+    window.addEventListener('touchstart', onFirstInteraction, { passive: true });
+    window.addEventListener('click', onFirstInteraction);
+    window.addEventListener('keydown', onFirstInteraction);
+    return () => {
+      window.removeEventListener('scroll', onFirstInteraction);
+      window.removeEventListener('mousemove', onFirstInteraction);
+      window.removeEventListener('touchstart', onFirstInteraction);
+      window.removeEventListener('click', onFirstInteraction);
+      window.removeEventListener('keydown', onFirstInteraction);
+    };
   }, [bob, floatX, floatRz]);
   useMotionValueEvent(x, 'change', (vx) => {
     xCombinedRaw.set(vx + shakeX.get() + floatX.get());

@@ -49,10 +49,7 @@ export function AvailableClient() {
     window.addEventListener('click', onFirstInteraction);
     window.addEventListener('keydown', onFirstInteraction);
 
-    const timeout = setTimeout(start, 4000);
-
     return () => {
-      clearTimeout(timeout);
       io.disconnect();
       window.removeEventListener('scroll', onFirstInteraction);
       window.removeEventListener('mousemove', onFirstInteraction);

@@ -11,12 +11,35 @@ export function SpaceBackgroundClient() {
   const [ready, setReady] = useState(false);
   useEffect(() => {
     let started = false;
+    const canLoad = () => {
+      const nc = (
+        navigator as Navigator & {
+          connection?: { saveData?: boolean; effectiveType?: string };
+        }
+      ).connection;
+      if (nc?.saveData) return false;
+      if (nc?.effectiveType && nc.effectiveType !== '4g') return false;
+      return true;
+    };
     const start = () => {
       if (started) return;
       started = true;
       setReady(true);
     };
+    const onLoadIdle = () => {
+      const w = window as Window & {
+        requestIdleCallback?: (cb: () => void) => void;
+      };
+      const ric = w.requestIdleCallback;
+      if (!canLoad()) return;
+      if (typeof ric === 'function') {
+        ric(start);
+      } else {
+        setTimeout(start, 12000);
+      }
+    };
     const onFirstInteraction = () => {
+      if (!canLoad()) return;
       start();
       window.removeEventListener('scroll', onFirstInteraction);
       window.removeEventListener('mousemove', onFirstInteraction);
@@ -35,9 +58,9 @@ export function SpaceBackgroundClient() {
     window.addEventListener('wheel', onFirstInteraction as EventListener, {
       passive: true,
     });
-    const timeout = setTimeout(start, 3000);
+    window.addEventListener('load', onLoadIdle, { once: true });
     return () => {
-      clearTimeout(timeout);
+      window.removeEventListener('load', onLoadIdle);
       window.removeEventListener('scroll', onFirstInteraction);
       window.removeEventListener('mousemove', onFirstInteraction);
       window.removeEventListener('touchstart', onFirstInteraction);

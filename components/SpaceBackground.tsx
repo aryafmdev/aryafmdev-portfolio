@@ -7,8 +7,8 @@ export function SpaceBackground() {
     <div className='fixed inset-0 -z-10'>
       <Canvas
         className='w-full h-full'
-        gl={{ antialias: true, alpha: true }}
-        dpr={[1, 2]}
+        gl={{ antialias: false, alpha: true }}
+        dpr={[1, 1]}
       >
         <Stars
           radius={140}

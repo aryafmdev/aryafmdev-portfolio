@@ -127,7 +127,7 @@ export function Contact() {
                 type='text'
                 autoComplete='name'
                 required
-                className='mt-sm w-full rounded-xl border border-neutral-900 bg-neutral-900/20 px-2xl py-xl text-neutral-100 placeholder-neutral-500'
+                className='mt-sm w-full rounded-xl border border-neutral-900 bg-neutral-900/20 px-2xl py-xl text-neutral-100 placeholder-neutral-300'
                 placeholder='Your name'
                 aria-label='Name'
                 aria-invalid={Boolean(errors.name) || undefined}
@@ -150,7 +150,7 @@ export function Contact() {
                 type='email'
                 autoComplete='email'
                 required
-                className='mt-sm w-full rounded-xl border border-neutral-900 bg-neutral-900/20 px-2xl py-xl text-neutral-100 placeholder-neutral-500'
+                className='mt-sm w-full rounded-xl border border-neutral-900 bg-neutral-900/20 px-2xl py-xl text-neutral-100 placeholder-neutral-300'
                 placeholder='you@example.com'
                 aria-label='Email'
                 aria-invalid={Boolean(errors.email) || undefined}
@@ -172,7 +172,7 @@ export function Contact() {
                 name='message'
                 rows={6}
                 required
-                className='mt-sm w-full rounded-xl border border-neutral-900 bg-neutral-900/20 px-2xl py-xl text-neutral-100 placeholder-neutral-500 md:flex-1 md:min-h-[160px] lg:min-h-[320px] xl:min-h-[380px] resize-none'
+                className='mt-sm w-full rounded-xl border border-neutral-900 bg-neutral-900/20 px-2xl py-xl text-neutral-100 placeholder-neutral-300 md:flex-1 md:min-h-[160px] lg:min-h-[320px] xl:min-h-[380px] resize-none'
                 placeholder='Write your message...'
                 aria-label='Message'
                 aria-invalid={Boolean(errors.message) || undefined}
