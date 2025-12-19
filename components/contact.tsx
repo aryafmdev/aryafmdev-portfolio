@@ -107,14 +107,14 @@ export function Contact() {
         LET’S GET IN TOUCH
       </h2>
 
-      <div className='mt-xl md:grid md:grid-cols-2 md:gap-xl md:items-center'>
-        <div className='md:pr-xl'>
+      <div className='mt-6xl md:grid md:grid-cols-2 md:gap-6xl md:items-stretch'>
+        <div className='md:pr-2xl md:h-full'>
           <AvailableClient />
         </div>
-        <div>
+        <div className='md:h-full'>
           <form
             onSubmit={onSubmit}
-            className='mx-auto w-full space-y-3xl md:space-y-3xl'
+            className='mx-auto w-full space-y-xl md:h-full md:flex md:flex-col'
             noValidate
           >
             <div>
@@ -163,7 +163,7 @@ export function Contact() {
               )}
             </div>
 
-            <div>
+            <div className='md:flex-1 md:flex md:flex-col'>
               <label htmlFor='message' className='text-md text-neutral-100'>
                 Message
               </label>
@@ -172,7 +172,7 @@ export function Contact() {
                 name='message'
                 rows={6}
                 required
-                className='mt-sm w-full rounded-xl border border-neutral-900 bg-neutral-900/20 px-2xl py-xl text-neutral-100 placeholder-neutral-500'
+                className='mt-sm w-full rounded-xl border border-neutral-900 bg-neutral-900/20 px-2xl py-xl text-neutral-100 placeholder-neutral-500 md:flex-1 md:min-h-[160px] lg:min-h-[320px] xl:min-h-[380px] resize-none'
                 placeholder='Write your message...'
                 aria-label='Message'
                 aria-invalid={Boolean(errors.message) || undefined}
@@ -185,12 +185,12 @@ export function Contact() {
               )}
             </div>
 
-            <div>
+            <div className='md:mt-auto'>
               <button
                 type='submit'
-                className='inline-flex w-full items-center justify-center rounded-full bg-primary-200 px-6xl py-xl text-black shadow-neon transition-colors hover:bg-primary-300 cursor-pointer md:mt-7xl'
+                className='inline-flex w-full items-center justify-center rounded-full bg-primary-200 px-6xl py-xl text-black shadow-neon transition-colors hover:bg-primary-300 cursor-pointer'
               >
-                <span className='text-lg font-bold '>Send Message</span>
+                <span className='text-lg font-bold'>Send Message</span>
               </button>
             </div>
           </form>

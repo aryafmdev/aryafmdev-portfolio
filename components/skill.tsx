@@ -54,7 +54,7 @@ export function Skill() {
         <div className='mt-6xl md:mt-0 space-y-2xl'>
           {skills.map((s) => (
             <div key={s.name} className='w-full'>
-              <div className='relative h-12 w-full rounded-full bg-neutral-900'>
+              <div className='relative h-12 w-full rounded-full bg-neutral-500'>
                 <div
                   className='absolute left-0 top-0 h-full rounded-full bg-primary-200 shadow-neon'
                   style={{ width: `${s.percent}%` }}
@@ -63,7 +63,7 @@ export function Skill() {
                   <span className='text-lg font-semibold text-black'>
                     {s.name}
                   </span>
-                  <span className='inline-block text-md text-neutral-100'>
+                  <span className='inline-block text-md font-semibold text-black'>
                     {s.percent}%
                   </span>
                 </div>
