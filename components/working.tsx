@@ -79,7 +79,7 @@ export function Working() {
         WHY CHOOSE ME?
       </h2>
 
-      <div className='mt-6xl space-y-8xl'>
+      <div className='mt-6xl space-y-8xl md:space-y-0 md:grid md:grid-cols-2 md:gap-8xl'>
         <ListSection
           title='WORKING WITH ME'
           avatar={
