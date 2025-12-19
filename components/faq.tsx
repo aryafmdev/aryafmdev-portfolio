@@ -39,17 +39,26 @@ export function FAQ() {
       <h2 id='faq-title' className='mt-md text-display-md font-extrabold uppercase text-center'>
         FREQUENTLY ASKED QUESTIONS
       </h2>
-      <div className='mt-6xl'>
-        {faqs.map((item, idx) => (
-          <div key={item.q} className='py-2xl'>
-            <div className='flex items-center gap-md'>
-              <span className='inline-flex items-center justify-center text-primary-200'>
-                <Icon icon='ph:star-fill' width={20} height={20} className='neon-icon' />
-              </span>
-              <p className='text-lg font-semibold text-neutral-100'>{item.q}</p>
+      <div className='mt-6xl space-y-2xl md:space-y-6xl'>
+        {Array.from({ length: Math.ceil(faqs.length / 2) }, (_, ri) =>
+          faqs.slice(ri * 2, ri * 2 + 2)
+        ).map((row, rIdx) => (
+          <div key={rIdx}>
+            <div className='md:grid md:grid-cols-2 md:gap-xl'>
+              {row.map((item, idx) => (
+                <div key={item.q} className='py-2xl'>
+                  <div className='flex items-center gap-md'>
+                    <span className='inline-flex items-center justify-center text-primary-200'>
+                      <Icon icon='ph:star-fill' width={20} height={20} className='neon-icon' />
+                    </span>
+                    <p className='text-lg font-semibold text-neutral-100'>{item.q}</p>
+                  </div>
+                  <p className='mt-sm text-md text-neutral-400'>{item.a}</p>
+                  {idx < row.length - 1 && <div className='mt-2xl border-t border-neutral-900 md:hidden' />}
+                </div>
+              ))}
             </div>
-            <p className='mt-sm text-md text-neutral-400'>{item.a}</p>
-            {idx < faqs.length - 1 && <div className='mt-2xl border-t border-neutral-900' />}
+            {rIdx < Math.ceil(faqs.length / 2) - 1 && <div className='mt-2xl border-t border-neutral-900 md:mt-4xl' />}
           </div>
         ))}
       </div>
