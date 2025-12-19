@@ -75,7 +75,7 @@ function ExperienceCard(props: { item: ExpItem; index: number }) {
 export function Experience() {
   return (
     <section id='experience' aria-labelledby='experience-title' className='text-neutral-100 max-w-[1280px] mx-auto'>
-      <p className='text-md font-semibold text-primary-200 neon-text text-center'>EXPERIENCE</p>
+      <p className='text-md font-semibold text-primary-200 text-center'>EXPERIENCE</p>
       <h2 id='experience-title' className='mt-md text-display-sm font-extrabold uppercase text-center'>
         PROFESSIONAL WORK
       </h2>

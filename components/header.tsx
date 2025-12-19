@@ -56,7 +56,7 @@ export function Header() {
         <div className='flex items-center gap-md'>
           <Link
             href='#home'
-            className='text-display-sm font-extrabold text-primary-200 neon-text'
+            className='text-display-sm font-extrabold text-primary-200'
             onClick={handleNavClick('home')}
           >
             Arya FM
@@ -70,7 +70,7 @@ export function Header() {
               onClick={handleNavClick(item.id)}
               className={`text-md font-medium transition-colors ${
                 active === item.id
-                  ? 'text-primary-200 neon-text'
+                  ? 'text-primary-200'
                   : 'text-neutral-100 hover:text-primary-200'
               }`}
             >
@@ -128,7 +128,7 @@ export function Header() {
                   href={item.href}
                   className={`text-xl font-medium transition-colors ${
                     active === item.id
-                      ? 'text-primary-200 neon-text'
+                      ? 'text-primary-200'
                       : 'text-neutral-100 hover:text-primary-200'
                   }`}
                   onClick={handleNavClick(item.id)}

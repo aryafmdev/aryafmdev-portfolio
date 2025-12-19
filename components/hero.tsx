@@ -216,7 +216,7 @@ export function Hero() {
           </div>
           <h1 className='mt-2xl text-display-sm font-extrabold uppercase'>
             Building fast &amp;{' '}
-            <span className='text-primary-200 neon-text'>Interactive</span> web
+            <span className='text-primary-200'>Interactive</span> web
             experiences.
           </h1>
           <p className='mt-2xl text-md text-neutral-400'>

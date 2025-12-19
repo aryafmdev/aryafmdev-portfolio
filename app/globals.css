@@ -125,10 +125,7 @@ body {
 }
 
 .neon-text {
-  text-shadow:
-    /* 0 0 3px var(--color-primary-200), */
-    /* 0 0 6px var(--color-primary-100), */ 0
-    0 22px var(--color-primary-100);
+  text-shadow: none;
 }
 
 .neon-icon {

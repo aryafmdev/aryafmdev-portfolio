@@ -36,7 +36,7 @@ export function Skill() {
     >
       <div className='md:grid md:grid-cols-2 md:items-start md:gap-xs'>
         <div>
-          <p className='text-md font-semibold text-primary-200 neon-text'>
+          <p className='text-md font-semibold text-primary-200'>
             SKILLS
           </p>
           <h2

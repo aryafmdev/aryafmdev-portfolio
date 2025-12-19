@@ -7,14 +7,14 @@ export function About() {
       aria-labelledby='about-title'
       className='text-neutral-100 text-center max-w-[1280px] mx-auto'
     >
-      <p className='text-md font-semibold text-primary-200 neon-text'>ABOUT ME</p>
+      <p className='text-md font-semibold text-primary-200'>ABOUT ME</p>
       <h2
         id='about'
         className='mt-md text-display-xs font-extrabold uppercase'
       >
         Crafting seamless
         <br />
-        <span className='text-primary-200 neon-text'> High-performance web </span>
+        <span className='text-primary-200'> High-performance web </span>
         <br />
         experiences
       </h2>

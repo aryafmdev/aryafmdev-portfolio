@@ -97,7 +97,7 @@ export function Contact() {
       aria-labelledby='contact-title'
       className='text-neutral-100 max-w-[1280px] mx-auto'
     >
-      <p className='text-md font-semibold text-primary-200 neon-text text-center'>
+      <p className='text-md font-semibold text-primary-200 text-center'>
         CONTACT
       </p>
       <h2
