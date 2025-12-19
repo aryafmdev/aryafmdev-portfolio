@@ -6,7 +6,9 @@ const withBundleAnalyzer = bundleAnalyzer({
 
 const nextConfig = {
   reactStrictMode: true,
+  turbopack: {
+    root: 'c:/Users/admin/Documents/my-project',
+  },
 };
 
 export default withBundleAnalyzer(nextConfig);
-

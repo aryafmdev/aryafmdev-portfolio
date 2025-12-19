@@ -39,6 +39,7 @@ export function Hero() {
   const floatRz = useMotionValue(0);
   const xCombinedRaw = useMotionValue(0);
   const rzCombinedRaw = useMotionValue(0);
+  const containerRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     let started = false;
     const start = () => {
@@ -60,15 +61,20 @@ export function Hero() {
         repeat: Infinity,
       });
     };
-    const w = window as Window & {
-      requestIdleCallback?: (cb: () => void) => void;
-    };
-    const ric = w.requestIdleCallback;
-    if (typeof ric === 'function') {
-      ric(start);
-    } else {
-      setTimeout(start, 2400);
-    }
+    const io = new IntersectionObserver(
+      (entries, obs) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            start();
+            obs.disconnect();
+            break;
+          }
+        }
+      },
+      { rootMargin: '200px' }
+    );
+    const node = containerRef.current;
+    if (node) io.observe(node);
     const onFirstInteraction = () => {
       start();
       window.removeEventListener('scroll', onFirstInteraction);
@@ -76,20 +82,28 @@ export function Hero() {
       window.removeEventListener('touchstart', onFirstInteraction);
       window.removeEventListener('click', onFirstInteraction);
       window.removeEventListener('keydown', onFirstInteraction);
+      window.removeEventListener('wheel', onFirstInteraction as EventListener);
     };
     window.addEventListener('scroll', onFirstInteraction, { passive: true });
     window.addEventListener('mousemove', onFirstInteraction, { passive: true });
-    window.addEventListener('touchstart', onFirstInteraction, { passive: true });
+    window.addEventListener('touchstart', onFirstInteraction, {
+      passive: true,
+    });
     window.addEventListener('click', onFirstInteraction);
     window.addEventListener('keydown', onFirstInteraction);
+    window.addEventListener('wheel', onFirstInteraction as EventListener, {
+      passive: true,
+    });
     return () => {
+      io.disconnect();
       window.removeEventListener('scroll', onFirstInteraction);
       window.removeEventListener('mousemove', onFirstInteraction);
       window.removeEventListener('touchstart', onFirstInteraction);
       window.removeEventListener('click', onFirstInteraction);
       window.removeEventListener('keydown', onFirstInteraction);
+      window.removeEventListener('wheel', onFirstInteraction as EventListener);
     };
-  }, [bob, floatX, floatRz]);
+  }, [bob, floatX, floatRz, containerRef]);
   useMotionValueEvent(x, 'change', (vx) => {
     xCombinedRaw.set(vx + shakeX.get() + floatX.get());
   });
@@ -111,7 +125,6 @@ export function Hero() {
   const yShadow = useTransform(y, (v) => v * 0.6);
   const rxShadow = useTransform(rotateX, (v) => v * 0.5);
   const ryShadow = useTransform(rotateY, (v) => v * 0.5);
-  const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ['start end', 'end start'],
@@ -292,7 +305,8 @@ export function Hero() {
                 src={heroImage}
                 alt='Hero image'
                 className='block w-full'
-                sizes='(min-width: 768px) 1100px, 100vw'
+                sizes='(min-width: 1280px) 1100px, (min-width: 768px) 600px, 348px'
+                quality={50}
                 placeholder='blur'
                 priority
               />

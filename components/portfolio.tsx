@@ -81,6 +81,9 @@ export function Portfolio() {
                 src={it.image}
                 alt={`${it.title} ${idx + 1}`}
                 className='w-full object-cover'
+                sizes='(min-width: 1280px) 1100px, (min-width: 768px) 720px, 100vw'
+                quality={60}
+                placeholder='blur'
               />
             </div>
             <h3 className='mt-xl text-xl font-semibold text-neutral-100'>
