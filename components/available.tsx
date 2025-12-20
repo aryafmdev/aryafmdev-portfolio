@@ -295,7 +295,7 @@ export function Available() {
               />
             </a>
             <a
-              href='https://www.linkedin.com/in/arya-fm-81a91038b/'
+              href='https://www.linkedin.com/in/aryafmdev/'
               aria-label='LinkedIn Profile'
               target='_blank'
               rel='noopener noreferrer'
