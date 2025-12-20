@@ -24,7 +24,7 @@ const FooterLazy = dynamic(() =>
 const ContactLazy = dynamic(() =>
   import('@/components/contact').then((m) => m.Contact)
 );
-import { Hero } from '@/components/hero';
+import { HeroStatic } from '@/components/hero-static';
 import { InViewClient } from '@/components/InViewClient';
 
 export default function Home() {
@@ -32,7 +32,7 @@ export default function Home() {
     <div className='bg-dark font-sans'>
       <Header />
       <main className='mx-auto w-full px-4xl py-xl text-neutral-100'>
-        <Hero />
+        <HeroStatic />
         <div className='mt-8xl'>
           <InViewClient>
             <ServiceLazy />
