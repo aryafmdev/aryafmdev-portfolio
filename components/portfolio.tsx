@@ -1,8 +1,8 @@
 import Image, { StaticImageData } from 'next/image';
 import portfolio1 from '@/app/assets/cinemapedia.png';
-import portfolio2 from '@/app/assets/sociality.png';
-import portfolio3 from '@/app/assets/booky.png';
-import portfolio4 from '@/app/assets/foody.png';
+// import portfolio2 from '@/app/assets/sociality.png';
+// import portfolio3 from '@/app/assets/booky.png';
+// import portfolio4 from '@/app/assets/foody.png';
 // import portfolio5 from '@/app/assets/portfolio5.png';
 // import portfolio6 from '@/app/assets/portfolio6.png';
 
@@ -21,27 +21,27 @@ const items: PortfolioItem[] = [
     image: portfolio1,
     liveUrl: 'https://cinemapedia-olive.vercel.app/',
   },
-  {
-    title: 'Sociality',
-    description:
-      'Sociality is A modern social media platform built with Next.js + TypeScript. Tailwind CSS, shadcn/ui, Redux Toolkit manages client state, TanStack Query handles server state with caching, Optimistic UI ensures responsive UX, Day.js formats dates, and ZOD + React Hook Form power validation and forms.',
-    image: portfolio2,
-    liveUrl: 'https://socialmediaappnextjstypescripttailw.vercel.app/',
-  },
-  {
-    title: 'Booky',
-    description:
-      'Booky is a modern library web app built with React, TypeScript, and Vite. It features authentication, book search and filters, detailed pages with reviews and stock, loan management, and user profiles. Styling uses Tailwind CSS + shadcn/ui, with Redux Toolkit, TanStack Query, and Day.js.',
-    image: portfolio3,
-    liveUrl: 'https://booky-library-web.vercel.app/',
-  },
-  {
-    title: 'Foody',
-    description:
-      'Foody is a restaurant web app built with React, Vite, and TypeScript. It enables users to explore menus, apply filters, search dishes, manage their cart, and complete simple checkouts. Styled with Tailwind CSS and shadcn/ui, it uses Redux Toolkit for UI state and TanStack Query for server data, responsive, and structured user experiences.',
-    image: portfolio4,
-    liveUrl: 'https://foody-restaurant-app-wine.vercel.app/',
-  },
+  // {
+  //   title: 'Sociality',
+  //   description:
+  //     'Sociality is A modern social media platform built with Next.js + TypeScript. Tailwind CSS, shadcn/ui, Redux Toolkit manages client state, TanStack Query handles server state with caching, Optimistic UI ensures responsive UX, Day.js formats dates, and ZOD + React Hook Form power validation and forms.',
+  //   image: portfolio2,
+  //   liveUrl: 'https://socialmediaappnextjstypescripttailw.vercel.app/',
+  // },
+  // {
+  //   title: 'Booky',
+  //   description:
+  //     'Booky is a modern library web app built with React, TypeScript, and Vite. It features authentication, book search and filters, detailed pages with reviews and stock, loan management, and user profiles. Styling uses Tailwind CSS + shadcn/ui, with Redux Toolkit, TanStack Query, and Day.js.',
+  //   image: portfolio3,
+  //   liveUrl: 'https://booky-library-web.vercel.app/',
+  // },
+  // {
+  //   title: 'Foody',
+  //   description:
+  //     'Foody is a restaurant web app built with React, Vite, and TypeScript. It enables users to explore menus, apply filters, search dishes, manage their cart, and complete simple checkouts. Styled with Tailwind CSS and shadcn/ui, it uses Redux Toolkit for UI state and TanStack Query for server data, responsive, and structured user experiences.',
+  //   image: portfolio4,
+  //   liveUrl: 'https://foody-restaurant-app-wine.vercel.app/',
+  // },
   // {
   //   title: 'Selected Work',
   //   description:

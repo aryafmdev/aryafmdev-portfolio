@@ -15,15 +15,22 @@ export function Contact() {
   }>({});
 
   const contactSchema = z.object({
-    name: z.string().min(2, 'Name must be at least 2 characters'),
-    email: z.string().email('Invalid email address'),
+    name: z
+      .string()
+      .min(2, 'Name must be at least 2 characters')
+      .max(100, 'Name must be at most 100 characters'),
+    email: z
+      .string()
+      .email('Invalid email address')
+      .max(254, 'Email is too long'),
     message: z
       .string()
       .trim()
       .refine(
         (msg) => msg.split(/\s+/).filter(Boolean).length >= 2,
         'Message must contain at least 2 words'
-      ),
+      )
+      .max(4000, 'Message must be at most 4000 characters'),
   });
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
@@ -33,6 +40,7 @@ export function Contact() {
     const name = String(data.get('name') || '').trim();
     const email = String(data.get('email') || '').trim();
     const message = String(data.get('message') || '').trim();
+    const hp = String(data.get('hp') || '');
     const result = contactSchema.safeParse({ name, email, message });
 
     if (result.success) {
@@ -41,7 +49,7 @@ export function Contact() {
         const res = await fetch('/api/contact', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name, email, message }),
+          body: JSON.stringify({ name, email, message, hp }),
         });
         if (res.ok) {
           setStatus('success');
@@ -117,6 +125,13 @@ export function Contact() {
             className='mx-auto w-full space-y-xl md:h-full md:flex md:flex-col'
             noValidate
           >
+            <input
+              type='text'
+              name='hp'
+              aria-hidden='true'
+              tabIndex={-1}
+              className='hidden'
+            />
             <div>
               <label htmlFor='name' className='text-md text-neutral-100'>
                 Name
